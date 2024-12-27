@@ -1,5 +1,16 @@
- 
 p{
-    color: green;        
-    
+    color: green;       
+}
+
+[data-tab-content]{
+    display: none;
+}
+
+.active[data-tab-content]{
+    display: block;
+}
+
+.tabs{
+    display: flex;
+    justify-content: space-around;
 }
