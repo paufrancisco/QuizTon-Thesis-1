@@ -6,7 +6,6 @@
 
 body {
     font-family: 'Poppins';
-    background-color: #3e7e5e;
     color: white;
     display: flex;
     flex-direction: column;
@@ -14,6 +13,9 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
+    background: radial-gradient(circle, #3e7e5e, #317156);
+  
+    
 }
 
 header {
