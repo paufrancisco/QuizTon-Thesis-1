@@ -1,16 +1,112 @@
-p{
-    color: green;       
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-[data-tab-content]{
-    display: none;
-}
-
-.active[data-tab-content]{
-    display: block;
-}
-
-.tabs{
+body {
+    font-family: 'Poppins';
+    color: 16423C;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background: radial-gradient(circle, #429873, #317156);
+    background: url('../images/image.png') no-repeat center center fixed;
+    background-size: 2135px 1050px;
+
+    
+}
+
+header {
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: 16423C;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+.logo {
+    font-size: 48px;
+    font-weight: bold;
+    margin-left: 127px;
+    margin-right: auto;  
+
+}
+
+nav {
+    display: flex;
+    gap: 100px;
+    margin: 0 auto;  
+    position: absolute;  
+    
+
+ }
+
+nav a {
+    text-decoration: none;
+    color: 16423C;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.login-btn {
+    padding: 8px 15px;
+    background-color: #1a392f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 40px;
+    width: 101px;
+    font-family: 'Poppins';
+    font-size: 16px;
+    margin-left: auto; 
+}
+
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-weight: 200;
+    margin-bottom: 10px;
+    font-size: 64px;
+    font-family: 'Jua', sans-serif;
+    margin: 90px 288px;
+}
+
+p {
+    font-family: 'Roboto Flex';
+    font-size: 1.2rem;
+    margin: 90px 663px 320px;
+    
+}
+
+.get-started-btn {
+    height: 69px;
+    width: 232px;
+    padding: 10px 25px;
+    background-color: #1a392f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Poppins';
+    font-weight: 200;
+    font-size: 24px;
+   
+}
+
+.get-started-btn:hover {
+    background-color: #155532;
 }
