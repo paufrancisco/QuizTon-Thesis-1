@@ -15,10 +15,8 @@ body {
     margin: 0;
     background: radial-gradient(circle, #429873, #317156);
     background: url('../images/image.png') no-repeat center center fixed;
-    background-size: cover;
+    background-size: 2135px 1050px;
 
-
-  
     
 }
 
