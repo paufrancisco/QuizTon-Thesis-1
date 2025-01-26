@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Poppins';
-    color: white;
+    color: 16423C;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,6 +14,10 @@ body {
     min-height: 100vh;
     margin: 0;
     background: radial-gradient(circle, #429873, #317156);
+    background: url('../images/image.png') no-repeat center center fixed;
+    background-size: cover;
+
+
   
     
 }
@@ -24,7 +28,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: 16423C;
     position: fixed;
     top: 0;
     z-index: 1000;
@@ -49,7 +53,7 @@ nav {
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: 16423C;
     font-size: 16px;
     font-weight: 500;
 }
