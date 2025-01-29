@@ -47,8 +47,47 @@
         </div>
 
         <div id="accounts" class="content">
-            <h2>Accounts</h2>
-            <p>Manage user accounts here.</p>
+            <h2>Teacher Accounts</h2>
+            <p>Manage and review the teacher accounts here.</p>
+            
+            <!-- Table to Display Accounts -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Faculty ID</th>
+                        <th>Subjects Handled</th>
+                        <th>Status</th>
+                        <th>Account Approval</th>
+                        <th>Activity</th>
+                        <th>Last Login</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>12345</td>
+                        <td>Math, Science</td>
+                        <td>Active</td>
+                        <td>Approved</td>
+                        <td>Converted Quiz: Yes | Edited Question: No</td>
+                        <td>Jan 29, 2025</td>
+                        <td><button>Edit</button> <button>Deactivate</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>67890</td>
+                        <td>English, History</td>
+                        <td>Inactive</td>
+                        <td>Declined</td>
+                        <td>Converted Quiz: No | Edited Question: Yes</td>
+                        <td>Jan 20, 2025</td>
+                        <td><button>Edit</button> <button>Activate</button></td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
         </div>
 
         <div id="departments" class="content">
