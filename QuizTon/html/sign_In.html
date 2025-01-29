@@ -18,16 +18,22 @@
         <a href="welcome.html" class="logo">QuizTon</a>
         <a href="#" class="sign-in">Sign In</a>
     </nav>
-    
 
+   
+    <div class="form-container">
+        <form id="signinForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email address" required>
 
- 
-    <form id="signinForm">
-        <p>Email address <input type="email" id="email" placeholder="Enter your email address" required/><br/></p>
-        <p>Password <input type="password" id="password" placeholder="Enter your password" required/><br/></p>
-        <input type="submit" value="Sign In"/><br/>   
-    </form>
+            <label for="password">Password:</label>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <span class="toggle-password">🙈</span>
+            </div>
 
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
 
 </body>
 </html>
