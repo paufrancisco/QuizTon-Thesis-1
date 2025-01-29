@@ -1,10 +1,103 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/QuizTon-Thesis-1/QuizTon/css/admin.css">
+    <script type="module" src="/QuizTon-Thesis-1/QuizTon/js/admin.js"></script>
 </head>
 <body>
-    <p>Dashboard ni Admin</p>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>QuizTon</h2>
+        <a href="#" class="sidebar-link" data-target="dashboard">Dashboard</a>
+        <a href="#" class="sidebar-link" data-target="question-bank">Question Bank</a>
+        <a href="#" class="sidebar-link" data-target="accounts">Accounts</a>
+        <a href="#" class="sidebar-link" data-target="departments">Departments</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <h1>Admin Dashboard</h1>
+            </div>
+            <!-- Profile Circle -->
+            <div class="profile">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture">
+                <span>Admin</span>
+                <div class="profile-dropdown">
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Sections -->
+        <div id="dashboard" class="content active-content">
+            <h2>Welcome to the Dashboard</h2>
+            <p>Manage the QuizTon system here.</p>
+        </div>
+
+        <div id="question-bank" class="content">
+            <h2>Question Bank</h2>
+            <p>Manage all the questions here.</p>
+        </div>
+
+        <div id="accounts" class="content">
+            <h2>Teacher Accounts</h2>
+            <p>Manage and review the teacher accounts here.</p>
+            
+            <!-- Table to Display Accounts -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Faculty ID</th>
+                        <th>Subjects Handled</th>
+                        <th>Status</th>
+                        <th>Account Approval</th>
+                        <th>Activity</th>
+                        <th>Last Login</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>12345</td>
+                        <td>Math, Science</td>
+                        <td>Active</td>
+                        <td>Approved</td>
+                        <td>Converted Quiz: Yes | Edited Question: No</td>
+                        <td>Jan 29, 2025</td>
+                        <td><button>Edit</button> <button>Deactivate</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>67890</td>
+                        <td>English, History</td>
+                        <td>Inactive</td>
+                        <td>Declined</td>
+                        <td>Converted Quiz: No | Edited Question: Yes</td>
+                        <td>Jan 20, 2025</td>
+                        <td><button>Edit</button> <button>Activate</button></td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="departments" class="content">
+            <h2>Departments</h2>
+            <p>Manage departments here.</p>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
 </body>
 </html>
