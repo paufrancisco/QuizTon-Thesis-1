@@ -31,7 +31,7 @@ sidebarLinks.forEach(link => {
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { collection, where,deleteDoc,getDocs, query, orderBy, addDoc, updateDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, where,deleteDoc,getDocs, query, doc, setDoc, updateDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getAuth, signOut, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 
@@ -50,6 +50,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+ 
 
 
 
@@ -148,10 +149,11 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
         const user = userCredential.user;
 
         // Step 2: Add additional teacher data to Firestore
-        await addDoc(collection(db, "teacher_accounts"), {
-            uid: user.uid,  // Save user UID to associate with Firestore document
+        await setDoc(doc(db, "teacher_accounts", user.uid), {
+            uid: user.uid,  // Explicitly set document ID as the user UID
             ...teacherData
         });
+        
 
         alert("Teacher registered successfully!");
         getTeacherAccounts();
