@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="/QuizTon-Thesis-1/QuizTon/css/admin.css">
-    <script type="module" src="/QuizTon-Thesis-1/QuizTon/js/admin.js"></script>
+   
 </head>
 <body>
     <!-- Sidebar -->
@@ -26,11 +26,11 @@
             </div>
             <!-- Profile Circle -->
             <div class="profile">
-                <img src="https://via.placeholder.com/40" alt="Profile Picture">
+                <img src="/QuizTon-Thesis-1/QuizTon/images/placeholder-image.jpg" alt="Profile Picture">
                 <span>Admin</span>
                 <div class="profile-dropdown">
                     <a href="#">Settings</a>
-                    <a href="#">Logout</a>
+                    <a href="#" id="logout-button">Logout</a>
                 </div>
             </div>
         </div>
@@ -48,46 +48,32 @@
 
         <div id="accounts" class="content">
             <h2>Teacher Accounts</h2>
-            <p>Manage and review the teacher accounts here.</p>
-            
-            <!-- Table to Display Accounts -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Faculty ID</th>
-                        <th>Subjects Handled</th>
-                        <th>Status</th>
-                        <th>Account Approval</th>
-                        <th>Activity</th>
-                        <th>Last Login</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>John Doe</td>
-                        <td>12345</td>
-                        <td>Math, Science</td>
-                        <td>Active</td>
-                        <td>Approved</td>
-                        <td>Converted Quiz: Yes | Edited Question: No</td>
-                        <td>Jan 29, 2025</td>
-                        <td><button>Edit</button> <button>Deactivate</button></td>
-                    </tr>
-                    <tr>
-                        <td>Jane Smith</td>
-                        <td>67890</td>
-                        <td>English, History</td>
-                        <td>Inactive</td>
-                        <td>Declined</td>
-                        <td>Converted Quiz: No | Edited Question: Yes</td>
-                        <td>Jan 20, 2025</td>
-                        <td><button>Edit</button> <button>Activate</button></td>
-                    </tr>
-                    <!-- More rows as needed -->
-                </tbody>
-            </table>
+            <p>Manage and review teacher accounts here.</p>
+
+            <!-- Search and New Button -->
+            <div class="actions">
+                <input type="text" id="search" placeholder="Search teacher accounts...">
+                <button id="new-teacher" class="new-button">+ New Teacher</button>
+            </div>
+
+            <!-- Teacher Accounts Table -->
+                <table id="teacher-table" border="1" cellpadding="10" cellspacing="0" style="width: 100%; margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th id="email-header">Email Address</th>
+                            <th id="password-header">Password</th>
+                            <th id="role-header">Role</th>
+                            <th id="dob-header">Date of Birth</th>
+                            <th id="date-hired-header">Date Hired</th>
+                            <th id="year-level-header">Year Level</th>
+                            <th id="status-header">Status</th>
+                            <th>Actions</th> create features in password hide or show
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Teacher accounts will be dynamically populated here from Firebase -->
+                    </tbody>
+                </table>
         </div>
 
         <div id="departments" class="content">
@@ -96,7 +82,41 @@
         </div>
     </div>
 
-    <script>
+   <!-- Edit Modal -->
+    <div id="editModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); z-index: 1000;">
+        <h3>Edit Teacher Information</h3>
+        <form id="editForm">
+            <label for="edit-email">Email Address:</label><br>
+            <input type="email" id="edit-email" name="email"><br><br>
+
+            <label for="edit-password">Password:</label><br>
+            <input type="password" id="edit-password" name="password"><br><br>
+
+            <label for="edit-role">Role:</label><br>
+            <input type="text" id="edit-role" name="role"><br><br>
+
+            <label for="edit-dob">Date of Birth:</label><br>
+            <input type="date" id="edit-dob" name="dob"><br><br>
+
+            <label for="edit-date-hired">Date Hired:</label><br>
+            <input type="date" id="edit-date-hired" name="dateHired"><br><br>
+
+            <label for="edit-year-level">Year Level:</label><br>
+            <input type="text" id="edit-year-level" name="yearLevel"><br><br>
+
+            <label for="edit-status">Status:</label><br>
+            <select id="edit-status" name="status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select><br><br>
+
+            <button type="submit">Save Changes</button>
+            <button type="button" id="closeModal">Close</button>
+        </form>
+    </div>
+
+
+    <script type="module" src="/QuizTon-Thesis-1/QuizTon/js/admin.js">
         
     </script>
 </body>
