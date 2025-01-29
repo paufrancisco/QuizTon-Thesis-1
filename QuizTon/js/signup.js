@@ -30,6 +30,7 @@ console.log("Firestore initialized successfully:", db);
          const lastName = document.getElementById("lastName").value;
          const email = document.getElementById("email").value;
          const password = document.getElementById("password").value;
+         const facultyId = document.getElementById("password").value;
          const confirmPassword = document.getElementById("confirmPassword").value;
          const role = document.getElementById("role").value;
 
@@ -39,6 +40,7 @@ console.log("Firestore initialized successfully:", db);
              return;
          }
 
+
          try {
              // Save user in Firestore (Pending approval)
              await addDoc(collection(db, "pending_users"), {
@@ -47,6 +49,7 @@ console.log("Firestore initialized successfully:", db);
                  email: email,
                  password: password,  
                  role: role,
+                 facultyID: facultyId,
                  status: "pending"
              });
 

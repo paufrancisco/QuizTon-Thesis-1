@@ -1,10 +1,64 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/QuizTon-Thesis-1/QuizTon/css/admin.css">
+    <script type="module" src="/QuizTon-Thesis-1/QuizTon/js/admin.js"></script>
 </head>
 <body>
-    <p>Dashboard ni Admin</p>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>QuizTon</h2>
+        <a href="#" class="sidebar-link" data-target="dashboard">Dashboard</a>
+        <a href="#" class="sidebar-link" data-target="question-bank">Question Bank</a>
+        <a href="#" class="sidebar-link" data-target="accounts">Accounts</a>
+        <a href="#" class="sidebar-link" data-target="departments">Departments</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <h1>Admin Dashboard</h1>
+            </div>
+            <!-- Profile Circle -->
+            <div class="profile">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture">
+                <span>Admin</span>
+                <div class="profile-dropdown">
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Sections -->
+        <div id="dashboard" class="content active-content">
+            <h2>Welcome to the Dashboard</h2>
+            <p>Manage the QuizTon system here.</p>
+        </div>
+
+        <div id="question-bank" class="content">
+            <h2>Question Bank</h2>
+            <p>Manage all the questions here.</p>
+        </div>
+
+        <div id="accounts" class="content">
+            <h2>Accounts</h2>
+            <p>Manage user accounts here.</p>
+        </div>
+
+        <div id="departments" class="content">
+            <h2>Departments</h2>
+            <p>Manage departments here.</p>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
 </body>
 </html>
