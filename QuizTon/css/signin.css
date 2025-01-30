@@ -26,14 +26,12 @@
 }
 
 .nav-links {
-    list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 5px;
+    margin-left: auto;
 }
 
-.nav-links li {
-    display: inline;
-}
+
 
 .nav-links a {
     text-decoration: none;
@@ -43,11 +41,11 @@
 }
 
 .nav-links a:hover {
-    color: #f39c12;
+    color: #16423C;
+    
 }
 
 .sign-in {
-    background-color: #f39c12;
     color: white;
     padding: 8px 15px;
     border-radius: 5px;
@@ -56,7 +54,17 @@
 }
 
 .sign-in:hover {
-    background-color: #e67e22;
+    background-color: #dadada;
+}
+
+.SignInBtn{
+    background-color: #16423C; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
 }
 
 /* Sign-In Form Container */
@@ -105,6 +113,25 @@ input {
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 1.2rem;
+}
+
+/* Checkbox Container */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px; /* Adds spacing before the button */
+}
+
+.checkbox-container input {
+    width: auto; /* Keep checkbox size default */
+    margin: 0; /* Remove default margin */
+    vertical-align: middle; /* Align checkbox vertically */
+}
+
+.checkbox-container label {
+    font-size: 14px;
+    color: #555;
 }
 
 /* Sign-In Button */

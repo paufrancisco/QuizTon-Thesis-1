@@ -16,7 +16,12 @@
 
     <nav class="navbar">
         <a href="welcome.html" class="logo">QuizTon</a>
-        <a href="#" class="sign-in">Sign In</a>
+    <div class="nav-links">
+        <a href="#" class="sign-in">Home</a>
+        <a href="#" class="sign-in">Features In</a>
+        <a href="#" class="sign-in">FAQ In</a>
+        <a href="#" class="sign-in">Log In</a>
+    </div>    
     </nav>
 
    
@@ -24,16 +29,21 @@
         <form id="signinForm">
             <label for="email">Email:</label>
             <input type="email" id="email" placeholder="Enter your email address" required>
-
+    
             <label for="password">Password:</label>
             <div class="password-container">
                 <input type="password" id="password" placeholder="Enter your password" required>
                 <span class="toggle-password">🙈</span>
             </div>
-
-            <button type="submit">Sign In</button>
+    
+            <!-- Remember Me Checkbox -->
+            <div class="checkbox-container">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember Me</label>
+            </div>
+    
+            <button class="SignInBtn" type="submit">Sign In</button>
         </form>
     </div>
-
 </body>
 </html>
