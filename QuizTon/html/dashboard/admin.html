@@ -26,9 +26,12 @@
                 </div>
                 <!-- Profile Circle -->
                 <div class="profile">
-                    <img src="../../images/placeholder-image.jpg" alt="Profile Picture"> 
+                    <img src="../../images/placeholder-image.jpg" alt="Profile Picture" id="profile-image"> 
                     <div class="profile-dropdown">
-                        <a href="#">Settings</a>
+                        <p id="user-name"></p>
+                        <p id="user-email"></p>
+                        <hr class="divider">
+                        <a href="#" id="setting-button">Settings</a>
                         <a href="#" id="logout-button">Logout</a>
                     </div>
                 </div>
@@ -120,6 +123,7 @@
         <script type="module" src="../../js/general function/sidebar.js"></script>
         <script type="module" src="../../js/admn function/new-account.js"></script>
         <script type="module" src="../../js/admn function/update-account.js"></script>
-        
+        <script type="module" src="../../js/admn function/profile-dropdown.js"></script>
     </body>
+    
 </html>

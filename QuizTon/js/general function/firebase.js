@@ -4,7 +4,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { collection, where,deleteDoc,getDocs, query, doc, setDoc, updateDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, where,deleteDoc,getDocs, query, doc, setDoc,getDoc,updateDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getAuth, signOut, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 
@@ -34,6 +34,7 @@ export {
     where, 
     deleteDoc, 
     getDocs, 
+    getDoc, 
     query, 
     doc, 
     setDoc, 
