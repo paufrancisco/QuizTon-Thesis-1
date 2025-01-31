@@ -3,14 +3,84 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teacher Dashboard</title>
+        <link rel="stylesheet" href="../../css/teacher.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body>
-        <p>Dashboard ni Teacher</p>
-        <button id="logout-button">logout</button>
+         
+
+        <div class="sidebar">
+            <!-- Hamburger Menu -->
+            <div class="hamburger-menu" id="hamburger-menu">
+                
+            </div>
+        
+            <!-- Sidebar Content -->
+            <h2 class="sidebar-title">QuizTon</h2>
+            <a href="#" class="sidebar-link" data-target="dashboard">
+                <i class="icon fas fa-tachometer-alt"></i> <!-- Dashboard Icon -->
+                <span class="link-text">Dashboard</span>
+            </a>
+            <a href="#" class="sidebar-link" data-target="question-bank">
+                <i class="icon fas fa-book"></i> <!-- Question Bank Icon -->
+                <span class="link-text">Quiz Generator</span>
+            </a>
+            <a href="#" class="sidebar-link" data-target="accounts">
+                <i class="icon fas fa-users"></i> <!-- Accounts Icon -->
+                <span class="link-text">Saved Questions</span>
+            </a>
+            <a href="#" class="sidebar-link" data-target="departments">
+                <i class="icon fas fa-building"></i> <!-- Departments Icon -->
+                <span class="link-text">Departments</span>
+            </a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="logo">
+                    <h1>Teacher Dashboard</h1>
+                </div>
+                <!-- Profile Circle -->
+                <div class="profile">
+                    <img src="../../images/placeholder-image.jpg" alt="Profile Picture" id="profile-image"> 
+                    <div class="profile-dropdown">
+                        <p id="user-name"></p>
+                        <p id="user-email"></p>
+                        <hr class="divider">
+                        <a href="#" id="setting-button">Settings</a>
+                        <a href="#" id="logout-button">Logout</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div id="dashboard" class="content active-content">
+                <h2>Welcome to the Dashboard</h2>
+                <p>Manage the QuizTon system here.</p>
+            </div>
+
+            <div id="question-bank" class="content">
+                <h2>Quiz Generator</h2>
+                <p>Manage all the conversion here.</p>
+            </div>
+
+            <div id="accounts" class="content">
+                <h2>Question Bank</h2>
+                <p>Manage and choose questions.</p>
+
+
+
     </body>
     <script type="module" src="../../js/teacher.js"></script>
-    <script type="module" src="../../js/logout.js"></script>
+    <script type="module" src="../../js/general function/logout.js"></script>
     <script type="module" src="../../js/general function/firebase.js"></script>
-
+    <script type="module" src="../../js/admn function/delete-account.js"></script>
+    <script type="module" src="../../js/general function/logout.js"></script>
+    <script type="module" src="../../js/general function/sidebar.js"></script>
+    <script type="module" src="../../js/admn function/new-account.js"></script>
+    <script type="module" src="../../js/admn function/update-account.js"></script>
+    <script type="module" src="../../js/admn function/profile-dropdown.js"></script>
 
 </html>
