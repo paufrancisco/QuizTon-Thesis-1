@@ -24,25 +24,18 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////// logout function ///////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-document.getElementById('logout-button').addEventListener('click', function (event) {
-    event.preventDefault(); // Prevent default behavior of the link
-
-    const auth = getAuth();
-    
-    // Sign out the user
-    signOut(auth).then(() => {
-        // Redirect to the login page or a landing page
-        window.location.href = "/QuizTon-Thesis-1/QuizTon/html/sign_In.html";
-    }).catch((error) => {
-        // Handle errors here
-        console.error("Error during logout: ", error);
-        alert("An error occurred while logging out. Please try again.");
-    });
-});
+export { 
+    auth, 
+    db, 
+    getAuth, 
+    signOut, 
+    createUserWithEmailAndPassword, 
+    collection, 
+    where, 
+    deleteDoc, 
+    getDocs, 
+    query, 
+    doc, 
+    setDoc, 
+    updateDoc 
+};  // Exporting everything needed for Firestore and Auth

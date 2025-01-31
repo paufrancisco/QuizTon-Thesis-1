@@ -1,57 +1,18 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////SIDEBAR FUNCTIONS//////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// Select all sidebar links
-const sidebarLinks = document.querySelectorAll('.sidebar-link');
-
-// Add event listeners to sidebar links
-sidebarLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Get the target content section
-        const targetContent = this.getAttribute('data-target');
-        
-        // Hide all content sections
-        document.querySelectorAll('.content').forEach(content => {
-            content.classList.remove('active-content');
-        });
-
-        // Show the clicked content section
-        document.getElementById(targetContent)?.classList.add('active-content');
-    });
-});
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////IMPORTS////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { collection, where,deleteDoc,getDocs, query, doc, setDoc, updateDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAuth, signOut, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-
-
-// Firebase Config
-const firebaseConfig = {
-    apiKey: "AIzaSyDBFxB8rWCl3Qoxuh8zdetKwv4u3AmvxYM",
-    authDomain: "quizton-850ed.firebaseapp.com",
-    projectId: "quizton-850ed",
-    storageBucket: "quizton-850ed.firebasestorage.app",
-    messagingSenderId: "792857775463",
-    appId: "1:792857775463:web:296e0eecb6610f2d0f73c2"
-  };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
- 
-
+import { 
+    auth, 
+    db, 
+    getAuth, 
+    signOut, 
+    createUserWithEmailAndPassword, 
+    collection, 
+    where, 
+    deleteDoc, 
+    getDocs, 
+    query, 
+    doc, 
+    setDoc, 
+    updateDoc 
+} from '../../js/general function/firebase.js';   
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,6 +85,7 @@ function generatePassword() {
         passwordInput.value = "";
     }
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////// Register Teacher to Firestore //////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,7 +140,7 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// ////////////////////////////////////Fetch and display teacher data from Firestore//////////////////////////////////////////
+///////////////////////////////////////Fetch and display teacher data from Firestore//////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -319,127 +281,4 @@ function openEditModal(teacherData) {
         // Close the modal after saving
         closeModal();
     };
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////// Function to update teacher data in Firestore ///////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-async function updateTeacherInFirestore(facultyID, updatedTeacher) {
-    if (!facultyID) {
-        console.error("Error: Faculty ID is undefined.");
-        return;
-    }
-
-    try {
-        // Query Firestore by facultyID
-        const teacherRef = query(
-            collection(db, "teacher_accounts"),
-            where("facultyID", "==", facultyID)
-        );
-        const teacherSnapshot = await getDocs(teacherRef);
-
-        if (teacherSnapshot.empty) {
-            console.error(`No teacher found with facultyID: ${facultyID}`);
-            return;
-        }
-
-        // Assuming you get one teacher (adjust if multiple teachers can have the same facultyID)
-        const teacherDoc = teacherSnapshot.docs[0];
-        const teacherDocRef = teacherDoc.ref;
-
-        // Update the document with the new data
-        await updateDoc(teacherDocRef, updatedTeacher);
-        console.log("Teacher account updated successfully!");
-
-        // Refresh the teacher list after updating
-        getTeacherAccounts();
-        
-    } catch (error) {
-        console.error("Error updating teacher:", error);
-    }
-}
-
-// Function to close the modal
-function closeModal() {
-    document.getElementById("editModal").style.display = "none";
-}
-
-// Close the modal when the "Close" button is clicked
-document.getElementById("closeModal").addEventListener("click", closeModal);
-
-const teacherRef = collection(db, "teacher_accounts");
-const teacherSnapshot = await getDocs(teacherRef);
-const teacherList = teacherSnapshot.docs.map(doc => doc.data()); // Get data from each document
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////  Add the Edit button functionality to each row dynamically ///////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-teacherList.forEach(teacher => {
-    const row = teacherTable.insertRow();
-    row.insertCell(0).textContent = teacher.email;
-    row.insertCell(1).textContent = teacher.password;
-    row.insertCell(2).textContent = teacher.role;
-    row.insertCell(3).textContent = teacher.dob;
-    row.insertCell(4).textContent = teacher.dateHired;
-    row.insertCell(5).textContent = teacher.yearLevel;
-    row.insertCell(6).textContent = teacher.status;
-    const actionsCell = row.insertCell(7);
-    
-    // Create Edit Button
-    const editButton = document.createElement("button");
-    editButton.textContent = "Edit";
-    editButton.onclick = function () {
-        openEditModal(teacher); // Open the modal with the teacher's data
-    };
-
-    // Create Delete Button
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.onclick = async function () {
-        // Implement delete functionality here
-        await deleteTeacherFromFirestore(teacher.id);
-        getTeacherAccounts(); // Reload the table after deletion
-    };
-
-    actionsCell.appendChild(editButton);
-    actionsCell.appendChild(deleteButton);
-});
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////   Function to delete teacher from Firestore  ///////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Function to delete teacher from Firestore by facultyID
-async function deleteTeacherFromFirestore(facultyID) {
-    try {
-        const teacherQuery = query(
-            collection(db, "teacher_accounts"),
-            where("facultyID", "==", facultyID)
-        );
-
-        const teacherSnapshot = await getDocs(teacherQuery);
-
-        if (teacherSnapshot.empty) {
-            console.error("No teacher found with facultyID:", facultyID);
-            return;
-        }
-
-        const teacherDocRef = teacherSnapshot.docs[0].ref;
-        await deleteDoc(teacherDocRef);
-        alert("Teacher deleted successfully!");
-
-        // Optionally, refresh the teacher list
-        getTeacherAccounts();
-        
-    } catch (error) {
-        console.error("Error deleting teacher:", error);
-    }
 }
