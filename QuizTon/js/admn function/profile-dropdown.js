@@ -9,6 +9,7 @@ import {
     getDoc // Ensure you import getDoc here
 } from '../../js/general function/firebase.js';
 
+
 const profileImage = document.getElementById('profile-image');
 const profileDropdown = document.querySelector('.profile-dropdown');
 const logoutButton = document.getElementById('logout-button');
@@ -31,11 +32,6 @@ document.addEventListener('click', (event) => {
 profileDropdown.addEventListener('click', (event) => {
     event.stopPropagation(); // Prevent event from closing the dropdown when interacting with it
 });
-
- 
-
-
-
 
 // Function to fetch and display user details (first name, last name, email)
 async function loadUserProfile() {
