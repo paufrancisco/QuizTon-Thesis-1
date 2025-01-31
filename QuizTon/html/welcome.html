@@ -27,10 +27,35 @@
         </header>
     
         <main>
-            <h1>A quiz generator designed for <br>teachers.</h1>
-            <p>QuizTon is a cutting <br> edge artificial intelligence question generator designed with precision to <br>revolutionize the process of question and exam development.</p>
-            <button class="get-started-btn">GET STARTED</button>
+            <h1 id="typewriter-heading"></h1>
+            <p id="typewriter-text"></p>
+            <a href="sign_In.html"><button class="get-started-btn">GET STARTED</button></a>
         </main>
+        
+        <script>
+            function typeWriterEffect(element, text, speed, callback) {
+                let i = 0;
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    } else if (callback) {
+                        callback();  
+                    }
+                }
+                type();
+            }
+        
+            document.addEventListener("DOMContentLoaded", () => {
+                const heading = document.getElementById("typewriter-heading");
+                const text = document.getElementById("typewriter-text");
+        
+                typeWriterEffect(heading, "A quiz generator designed for teachers.", 50, () => {
+                    typeWriterEffect(text, "QuizTon is a cutting-edge artificial intelligence question generator designed with precision to revolutionize the process of question and exam development.", 25);
+                });
+            });
+        </script>
     </body>
     
 </html>
