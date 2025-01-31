@@ -53,3 +53,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const signinForm = document.getElementById('signinForm');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const rememberMeCheckbox = document.getElementById('rememberMe');
+  
+  // Check if "Remember Me" was checked previously and load the saved email
+  if (localStorage.getItem('rememberMe') === 'true') {
+      emailInput.value = localStorage.getItem('email');
+      rememberMeCheckbox.checked = true;
+  }
+
+  // Toggle password visibility
+  const togglePassword = document.querySelector('.toggle-password');
+  togglePassword.addEventListener('click', () => {
+      const type = passwordInput.type === 'password' ? 'text' : 'password';
+      passwordInput.type = type;
+      togglePasswordIcon.src = type === 'password' ? '../images/eye-icon.png' : '../images/eye-slash.png';
+    });
+
+  signinForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const email = emailInput.value;
+      const password = passwordInput.value;
+
+       
+      if (rememberMeCheckbox.checked) {
+          localStorage.setItem('rememberMe', 'true');
+          localStorage.setItem('email', email);
+      } else {
+          localStorage.setItem('rememberMe', 'false');
+          localStorage.removeItem('email');
+      }
+
+       console.log('Sign In with', email, password);
+  });
+});

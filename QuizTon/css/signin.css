@@ -100,6 +100,9 @@ input {
 /* Password Container */
 .password-container {
     position: relative;
+    display: flex;
+    align-items: center;  
+
 }
 
 .password-container input {
@@ -120,13 +123,13 @@ input {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 10px; /* Adds spacing before the button */
+    margin-bottom: 10px;  
 }
 
 .checkbox-container input {
-    width: auto; /* Keep checkbox size default */
-    margin: 0; /* Remove default margin */
-    vertical-align: middle; /* Align checkbox vertically */
+    width: auto;  
+    margin: 0; 
+    vertical-align: middle;  
 }
 
 .checkbox-container label {
