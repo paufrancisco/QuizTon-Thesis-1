@@ -72,3 +72,15 @@ getAuth().onAuthStateChanged((user) => {
         console.log("User is not signed in");
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.querySelector(".sidebar");
+    const mainContent = document.querySelector(".main-content");
+    const hamburgerMenu = document.getElementById("hamburger-menu");
+
+    hamburgerMenu.addEventListener("click", function () {
+        sidebar.classList.toggle("collapsed");
+        mainContent.classList.toggle("expanded");
+    });
+});
+
+ 

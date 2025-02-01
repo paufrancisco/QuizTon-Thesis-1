@@ -5,6 +5,69 @@ body {
     display: flex;
 }
 
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.dashboard-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.left {
+    width: 48%;
+}
+
+.right {
+    width: 48%;
+}
+
+.conversion-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.conversion-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.conversion-form input,
+.conversion-form textarea,
+.conversion-form select,
+.conversion-form button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+.conversion-form input:focus,
+.conversion-form textarea:focus,
+.conversion-form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.conversion-form button {
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.conversion-form button:hover {
+    background: #0056b3;
+}
+
 
 /* Basic Sidebar Styles */
 .sidebar {
@@ -33,7 +96,7 @@ body {
     color: black;
 }
 
-/* Sidebar Links */
+ 
 .sidebar-link {
     text-decoration: none;
     color: black;
@@ -43,17 +106,10 @@ body {
     margin: 5px 0;
 }
 
-.icon {
-    margin-right: 15px;  
-    font-size: 20px; 
-}
-
-/* Sidebar Collapsed State */
 .sidebar.collapsed {
     width: 80px;
     transition: 0.5s;
 }
-
 .sidebar.collapsed .link-text {
     display: none;  
 }
@@ -61,6 +117,15 @@ body {
 .sidebar.collapsed .icon {
     font-size: 24px; 
 }
+.icon {
+    margin-right: 15px;  
+    font-size: 20px; 
+}
+
+ 
+
+
+
 
  
  
@@ -89,6 +154,7 @@ body {
     padding: 20px;
     width: 100%;
 }
+ 
 
 .header {
     display: flex;
@@ -137,7 +203,7 @@ body {
     margin: 10px 0;
 }
 
-/* Default content styles */
+ 
 .content {
     display: none;
 }

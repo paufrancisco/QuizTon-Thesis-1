@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -7,42 +8,32 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </head>
     <body>
-         
-
         <div class="sidebar">
-            <!-- Hamburger Menu -->
-            <div class="hamburger-menu" id="hamburger-menu">
-                
-            </div>
-        
-            <!-- Sidebar Content -->
+            <div class="hamburger-menu" id="hamburger-menu"></div>
             <h2 class="sidebar-title">QuizTon</h2>
             <a href="#" class="sidebar-link" data-target="dashboard">
-                <i class="icon fas fa-tachometer-alt"></i> <!-- Dashboard Icon -->
+                <i class="icon fas fa-tachometer-alt"></i>
                 <span class="link-text">Dashboard</span>
             </a>
             <a href="#" class="sidebar-link" data-target="question-bank">
-                <i class="icon fas fa-book"></i> <!-- Question Bank Icon -->
+                <i class="icon fas fa-book"></i>
                 <span class="link-text">Quiz Generator</span>
             </a>
             <a href="#" class="sidebar-link" data-target="accounts">
-                <i class="icon fas fa-users"></i> <!-- Accounts Icon -->
+                <i class="icon fas fa-users"></i>
                 <span class="link-text">Saved Questions</span>
             </a>
             <a href="#" class="sidebar-link" data-target="departments">
-                <i class="icon fas fa-building"></i> <!-- Departments Icon -->
+                <i class="icon fas fa-building"></i>
                 <span class="link-text">Departments</span>
             </a>
         </div>
 
-        <!-- Main Content -->
         <div class="main-content">
-            <!-- Header -->
             <div class="header">
                 <div class="logo">
                     <h1>Teacher Dashboard</h1>
                 </div>
-                <!-- Profile Circle -->
                 <div class="profile">
                     <img src="../../images/placeholder-image.jpg" alt="Profile Picture" id="profile-image"> 
                     <div class="profile-dropdown">
@@ -55,32 +46,74 @@
                 </div>
             </div>
 
-            <!-- Content Sections -->
-            <div id="dashboard" class="content active-content">
-                <h2>Welcome to the Dashboard</h2>
-                <p>Manage the QuizTon system here.</p>
+            <div class="dashboard-container">
+                <div class="dashboard-section left" id="quiz-statistics">
+                    <h2>Quiz Generator</h2>
+                    <p>View analytics on quiz performance.</p>
+                    <div class="conversion-form">
+                        <label for="num-questions">How many questions do you need? (Max 30)
+                        </label>
+                        <input type="number" id="num-questions" max="40">
+                        
+                        <label for="text-input">Paste your text:</label>
+                        <textarea id="text-input" placeholder="Paste your text here"></textarea>
+                        
+                        <label for="file-upload">Upload PDF, Word, or PowerPoint (up to 10 pages)</label>
+                        <input type="file" id="file-upload">
+                        
+                        <label for="difficulty">Difficulty:</label>
+                        <select id="difficulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                        <label for="number-of-sets">Number of Sets:</label>
+                        <select id="number-of-sets">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <button id="generate-questions">Generate Questions</button>
+                    </div>
+                </div>
+
+                <div class="dashboard-section right" id="recent-activities">
+                    <h2>Result of Conversion</h2>
+                    <p>See the question and answer.</p>
+                    
+                </div>
+            </div>
+        </div>
+                
+                
             </div>
 
             <div id="question-bank" class="content">
                 <h2>Quiz Generator</h2>
-                <p>Manage all the conversion here.</p>
+                <div class="dashboard-section left" id="quiz-statistics">
+                    <h3>Quiz G</h3>
+                    <p>View analytics on quiz performance.</p>
+                </div>
+
+                <div class="dashboard-section right" id="recent-activities">
+                    <h3>Result of conversion</h3>
+                    <p>See the question and answer</p>
+                </div>
             </div>
 
             <div id="accounts" class="content">
                 <h2>Question Bank</h2>
                 <p>Manage and choose questions.</p>
-
-
+            </div>
+        </div>
 
     </body>
     <script type="module" src="../../js/teacher.js"></script>
     <script type="module" src="../../js/general function/logout.js"></script>
     <script type="module" src="../../js/general function/firebase.js"></script>
     <script type="module" src="../../js/admn function/delete-account.js"></script>
-    <script type="module" src="../../js/general function/logout.js"></script>
     <script type="module" src="../../js/general function/sidebar.js"></script>
     <script type="module" src="../../js/admn function/new-account.js"></script>
     <script type="module" src="../../js/admn function/update-account.js"></script>
     <script type="module" src="../../js/admn function/profile-dropdown.js"></script>
-
 </html>
