@@ -2,8 +2,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif; 
+    font-family: 'Inter';
+    animation: fadeIn 1s ease-in-out;
  }
+
+ @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+ html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
  
 /* Navbar Styling */
 .navbar {
@@ -11,7 +27,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #16423C;
-    padding: 15px 20px;
+    padding: 10px 25px;
 }
 
 .navbar .logo {
@@ -19,79 +35,100 @@
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
+    font-family: 'Archivo';
+    transition: 0.3s;
 }
 
 .navbar .logo:hover {
-    color: #f39c12;
+    color: #bbbbbb;
 }
 
 .nav-links {
     display: flex;
-    gap: 5px;
-    margin-left: auto;
+    gap: 40px;
+    font-size: 16px;
+    align-items: center;
 }
-
-
 
 .nav-links a {
     text-decoration: none;
     color: white;
-    font-size: 18px;
-    transition: 0.3s;
 }
 
-.nav-links a:hover {
+#sjcdc-logo {
+    width: 60px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#sjcdc {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
     color: #16423C;
-    
 }
 
-.sign-in {
-    color: white;
+#email-label {
+    margin-bottom: 5px;
+}
+
+#email {
+    margin-bottom: 1rem;
+}
+
+#password-label {
+    margin-bottom: 5px;
+}
+
+#sign-in {
+    background-color: #dadada;
+    color: #16423C;
     padding: 8px 15px;
     border-radius: 5px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
-.sign-in:hover {
-    background-color: #dadada;
-}
-
-.SignInBtn{
-    background-color: #16423C; 
-    color: white; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 16px; 
+#sign-in:hover {
+    background-color: #bbbbbb;
+    color: #16423C;
 }
 
 /* Sign-In Form Container */
-/* Center only the form */
 .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px); /* Adjusted to fit below navbar */
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/login-background.png");
+    background-size: cover;
+    background-position: center;
+    font-size: 16px;
 }
+
 
 /* Sign-In Form */
 form {
     background: #fff;
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 320px;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.4);
+    width: 25%;
+    min-width: 450px;
+    height: auto;
     display: flex;
     flex-direction: column;
+    margin-bottom: 5%;
 }
 
 /* Input Fields */
 input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
@@ -102,7 +139,6 @@ input {
     position: relative;
     display: flex;
     align-items: center;  
-
 }
 
 .password-container input {
@@ -112,10 +148,15 @@ input {
 .toggle-password {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 55%;
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 1.2rem;
+}
+
+#togglePasswordIcon {
+    width: 30px;
+    height: auto;
 }
 
 /* Checkbox Container */
@@ -123,7 +164,8 @@ input {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 10px;  
+    margin-top: 15px;
+    margin-bottom: 20px;  
 }
 
 .checkbox-container input {
@@ -137,18 +179,43 @@ input {
     color: #555;
 }
 
+
 /* Sign-In Button */
 button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+    background-color: #16423C; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
     transition: background 0.3s ease-in-out;
 }
 
 button:hover {
-    background: #0056b3;
+    background: #236058;
+}
+
+.signin-progress {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 250px;
+    height: 130px;
+    font-size: 16px;
+    background-color: white;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+#login-status {
+    color: red;
+    font-size: 14px;
+    margin-top: 8px;
 }
