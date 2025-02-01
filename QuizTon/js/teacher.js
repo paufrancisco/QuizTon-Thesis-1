@@ -7,7 +7,7 @@ import {
     doc, 
     getDocs, 
     getDoc 
-} from '../../js/general function/firebase.js';
+} from '../js/general function/firebase.js';
 
 
 const profileImage = document.getElementById('profile-image');
