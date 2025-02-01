@@ -166,28 +166,3 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Search Bar */
-
-.search-bar {
-    margin-left: 20px; /* Space between the heading and the search bar */
-}
-
-#search {
-    padding: 5px; /* Add some padding for better appearance */
-    border: 1px solid #ccc; /* Add a border */
-    border-radius: 4px; /* Rounded corners */
-}
-
-#search-button {
-    padding: 5px 10px; /* Add padding for the button */
-    margin-left: 5px; /* Space between input and button */
-    border: none; /* Remove default border */
-    background-color: #007BFF; /* Button color */
-    color: white; /* Text color */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-}
-
-#search-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
