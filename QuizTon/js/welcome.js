@@ -14,3 +14,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const loginButton = document.querySelector(".login-btn");
+    const getStartedButton = document.querySelector(".get-started-btn");
+
+    function fadeOutAndRedirect(event) {
+        event.preventDefault();  
+        document.body.classList.add("fade-out");  
+        
+        setTimeout(() => {
+            window.location.href = event.target.closest("a").href;  
+        }, 500);  
+    }
+
+    loginButton.addEventListener("click", fadeOutAndRedirect);
+    getStartedButton.addEventListener("click", fadeOutAndRedirect);
+});
+

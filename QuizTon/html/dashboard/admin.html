@@ -1,10 +1,149 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-</head>
-<body>
-    <p>Dashboard ni Admin</p>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard ssssssssssssssss</title>
+        <link rel="stylesheet" href="../../css/admin.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    </head>
+    <body>
+        <div class="sidebar">
+            <!-- Hamburger Menu -->
+            <div class="hamburger-menu" id="hamburger-menu">
+                
+            </div>
+        
+            <!-- Sidebar Content -->
+            <h2 class="sidebar-title">QuizTon</h2>
+            <a href="#" class="sidebar-link" data-target="dashboard">
+                <i class="icon fas fa-tachometer-alt"></i> <!-- Dashboard Icon -->
+                <span class="link-text">Dashboardsssssssssssssssss</span>
+            </a>
+            <a href="#" class="sidebar-link" data-target="question-bank">
+                <i class="icon fas fa-book"></i> <!-- Question Bank Icon -->
+                <span class="link-text">Question Bank</span>
+            </a>
+            <a href="#" class="sidebar-link" data-target="accounts">
+                <i class="icon fas fa-users"></i> <!-- Accounts Icon -->
+                <span class="link-text">Accounts</span>
+            </a>
+            <a href="#" class="sidebar-link" data-target="departments">
+                <i class="icon fas fa-building"></i> <!-- Departments Icon -->
+                <span class="link-text">Departments</span>
+            </a>
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="logo">
+                    <h1>Admin Dashboard</h1>
+                </div>
+                <!-- Profile Circle -->
+                <div class="profile">
+                    <img src="../../images/placeholder-image.jpg" alt="Profile Picture" id="profile-image"> 
+                   
+                    <div class="profile-dropdown">
+                        <p id="user-name"></p>
+                        <p id="user-email"></p>
+                        <hr class="divider">
+                        <a href="#" id="setting-button">Settings</a>
+                        <a href="#" id="logout-button">Logout</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div id="dashboard" class="content active-content">
+                <h2>Welcome to the Dashboardasd</h2>
+                <p>Manage the QuizTon system here.</p>
+            </div>
+
+            <div id="question-bank" class="content">
+                <h2>Question Bank</h2>
+                <p>Manage all the questions here.</p>
+            </div>
+
+            <div id="accounts" class="content">
+                <h2>Teacher Accounts</h2>
+                <p>Manage and review teacher accounts here.</p>
+
+                <!-- Search and New Button -->
+                <div class="actions">
+                    <input type="text" id="search" placeholder="Search teacher accounts...">
+                    <button id="new-teacher" class="new-button">+ New Teacher</button>
+                </div>
+
+                <!-- Teacher Accounts Table -->
+                    <table id="teacher-table" border="1" cellpadding="10" cellspacing="0" style="width: 100%; margin-top: 20px;">
+                        <thead>
+                            <tr>
+                                <th id="email-header">Email Address</th>
+                                <th id="password-header">Password</th>
+                                <th id="role-header">Role</th>
+                                <th id="dob-header">Date of Birth</th>
+                                <th id="date-hired-header">Date Hired</th>
+                                <th id="year-level-header">Year Level</th>
+                                <th id="status-header">Status</th>
+                                <th>Actions</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Teacher accounts will be dynamically populated here from Firebase -->
+                        </tbody>
+                    </table>
+            </div>
+
+            <div id="departments" class="content">
+                <h2>Departments</h2>
+                <p>Manage departments here.</p>
+            </div>
+        </div>
+
+    <!-- Edit Modal -->
+        <div id="editModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); z-index: 1000;">
+            <h3>Edit Teacher Information</h3>
+            <form id="editForm">
+                <label for="edit-email">Email Address:</label><br>
+                <input type="email" id="edit-email" name="email"><br><br>
+
+                <label for="edit-password">Password:</label><br>
+                <input type="password" id="edit-password" name="password"><br><br>
+
+                <label for="edit-role">Role:</label><br>
+                <input type="text" id="edit-role" name="role"><br><br>
+
+                <label for="edit-dob">Date of Birth:</label><br>
+                <input type="date" id="edit-dob" name="dob"><br><br>
+
+                <label for="edit-date-hired">Date Hired:</label><br>
+                <input type="date" id="edit-date-hired" name="dateHired"><br><br>
+
+                <label for="edit-year-level">Year Level:</label><br>
+                <input type="text" id="edit-year-level" name="yearLevel"><br><br>
+
+                <label for="edit-status">Status:</label><br>
+                <select id="edit-status" name="status">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select><br><br>
+
+                <button type="submit">Save Changes</button>
+                <button type="button" id="closeModal">Close</button>
+            </form>
+        </div>
+
+
+        <script type="module" src="../../js/admn function/delete-account.js"></script>
+        <script type="module" src="../../js/general function/logout.js"></script>
+        <script type="module" src="../../js/general function/sidebar.js"></script>
+        <script type="module" src="../../js/admn function/new-account.js"></script>
+        <script type="module" src="../../js/admn function/update-account.js"></script>
+        <script type="module" src="../../js/admn function/profile-dropdown.js"></script>
+    </body>
+    
 </html>

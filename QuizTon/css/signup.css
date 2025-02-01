@@ -1,5 +1,0 @@
-body { font-family: Arial, sans-serif; text-align: center; }
-        form { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
-        input, select, button { width: 100%; padding: 10px; margin: 5px 0; }
-        .password-container { position: relative; }
-        .toggle-password { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; }

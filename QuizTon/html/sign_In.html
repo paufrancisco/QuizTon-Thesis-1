@@ -4,22 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizTon | Sign In Page</title>
-    <script type="module" src="../js/signin.js"></script>  
+
+    <link rel="stylesheet" href="../css/signin.css">
 </head>
 <body>
 
-    <a href="welcome.html">
-        <h1 class="icon">QuizTon</h1>
-    </a>
-    <p>Sign in</p>
 
-    <form id="signinForm">
-        <p>Email address <input type="email" id="email" placeholder="Enter your email address" required/><br/></p>
-        <p>Password <input type="password" id="password" placeholder="Enter your password" required/><br/></p>
-        <input type="submit" value="Sign In"/><br/>
+    <nav class="navbar">
+        <a href="welcome.html" class="logo">QuizTon</a>
+    <div class="nav-links">
+        <a href="#" class="sign-in">Home</a>
+        <a href="#" class="sign-in">Features</a>
+        <a href="#" class="sign-in">FAQ</a>
+        <a href="#" class="sign-in">Log In</a>
+    </div>    
+    </nav>
 
-         
-    </form>
+   
+    <div class="form-container">
+        <form id="signinForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email address" required>
+    
+            <label for="password">Password:</label>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <span class="toggle-password">
+                    <img src="../images/eye-icon.png" width="40px" height="40px" alt="Show password" id="togglePasswordIcon">
+                </span>
+            </div>
+    
+            <!-- Remember Me Checkbox -->
+            <div class="checkbox-container">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember Me</label>
+            </div>
+    
+            <button class="SignInBtn" type="submit">Sign In</button>
+        </form>
+    </div>
+
+    <script type="module" src="../js/signin.js"></script>  
 
 </body>
 </html>

@@ -39,7 +39,10 @@ header {
     margin-right: auto;  
 
 }
-
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
 nav {
     display: flex;
     gap: 100px;
