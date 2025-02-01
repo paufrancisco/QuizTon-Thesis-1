@@ -1,6 +1,12 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  doc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // Firebase Config
@@ -20,15 +26,29 @@ const db = getFirestore(app);
 
 document.addEventListener("DOMContentLoaded", () => {
   const signinForm = document.getElementById("signinForm");
+  const signInProgress = document.querySelector(".signin-progress");
+  const signInProgressLabel = document.getElementById("signin-progress-label");
+  const loginStatus = document.getElementById("login-status");
 
   signinForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Show sign in progress
+    signInProgress.style.display = "flex";
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      // Show login success
+      signInProgressLabel.innerHTML = "Login Successfully!<br>Please wait...";
+
       const user = userCredential.user;
 
       // Fetch user data from Firestore
@@ -42,53 +62,66 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (userData.role === "teacher") {
           window.location.href = "dashboard/teacher.html";
         } else {
-          alert("Unknown role. Please contact an administrator.");
+          loginStatus.textContent =
+            "Unknown role. Please contact an administrator.";
+          signInProgress.style.display = "none";
         }
       } else {
-        alert("User data not found.");
+        loginStatus.textContent = "User data not found.";
+        signInProgress.style.display = "none";
       }
     } catch (error) {
-      console.error("Error signing in:", error);
-      alert("Sign-in failed: " + error.message);
+      if (error.code === "auth/invalid-credential") {
+        loginStatus.textContent = "Invalid email or password!";
+      } else if (error.code === "auth/network-request-failed") {
+        loginStatus.textContent =
+          "Connection error. Please check your internet connection.";
+      } else if (error.code === "auth/too-many-requests") {
+        loginStatus.textContent =
+          "Too many login request! Please try again later.";
+      } else {
+        loginStatus.textContent = "Unknown Error. Please try again later.";
+      }
+      signInProgress.style.display = "none";
     }
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const signinForm = document.getElementById('signinForm');
-  const emailInput = document.getElementById('email');
-  const passwordInput = document.getElementById('password');
-  const rememberMeCheckbox = document.getElementById('rememberMe');
-  
+document.addEventListener("DOMContentLoaded", () => {
+  const signinForm = document.getElementById("signinForm");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const rememberMeCheckbox = document.getElementById("rememberMe");
+
   // Check if "Remember Me" was checked previously and load the saved email
-  if (localStorage.getItem('rememberMe') === 'true') {
-      emailInput.value = localStorage.getItem('email');
-      rememberMeCheckbox.checked = true;
+  if (localStorage.getItem("rememberMe") === "true") {
+    emailInput.value = localStorage.getItem("email");
+    rememberMeCheckbox.checked = true;
   }
 
   // Toggle password visibility
-  const togglePassword = document.querySelector('.toggle-password');
-  togglePassword.addEventListener('click', () => {
-      const type = passwordInput.type === 'password' ? 'text' : 'password';
-      passwordInput.type = type;
-      togglePasswordIcon.src = type === 'password' ? '../images/eye-icon.png' : '../images/eye-slash.png';
-    });
+  const togglePassword = document.querySelector(".toggle-password");
+  togglePassword.addEventListener("click", () => {
+    const type = passwordInput.type === "password" ? "text" : "password";
+    passwordInput.type = type;
+    togglePasswordIcon.src =
+      type === "password"
+        ? "../images/eye-icon.png"
+        : "../images/eye-slash.png";
+  });
 
-  signinForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const email = emailInput.value;
-      const password = passwordInput.value;
+  signinForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-       
-      if (rememberMeCheckbox.checked) {
-          localStorage.setItem('rememberMe', 'true');
-          localStorage.setItem('email', email);
-      } else {
-          localStorage.setItem('rememberMe', 'false');
-          localStorage.removeItem('email');
-      }
+    const email = emailInput.value;
+    const password = passwordInput.value;
 
-       console.log('Sign In with', email, password);
+    if (rememberMeCheckbox.checked) {
+      localStorage.setItem("rememberMe", "true");
+      localStorage.setItem("email", email);
+    } else {
+      localStorage.setItem("rememberMe", "false");
+      localStorage.removeItem("email");
+    }
   });
 });

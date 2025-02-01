@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizTon | Sign In Page</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Archivo:wght@400;600&display=swap" rel="stylesheet"> <!-- This imports the "Inter" & "Archivo" font -->
     <link rel="stylesheet" href="../css/signin.css">
 </head>
 <body>
@@ -13,26 +13,31 @@
     <nav class="navbar">
         <a href="welcome.html" class="logo">QuizTon</a>
     <div class="nav-links">
-        <a href="#" class="sign-in">Home</a>
-        <a href="#" class="sign-in">Features</a>
-        <a href="#" class="sign-in">FAQ</a>
-        <a href="#" class="sign-in">Log In</a>
+        <a href="#" >Home</a>
+        <a href="#" >Features</a>
+        <a href="#" >FAQ</a>
+        <a href="#" id="sign-in">Log In</a>
     </div>    
     </nav>
 
    
     <div class="form-container">
         <form id="signinForm">
-            <label for="email">Email:</label>
+            <img src="../images/sjcdc-logo.png" id="sjcdc-logo"/>
+            <label id="sjcdc">SJCDC</label>
+
+            <label for="email" id="email-label">Email Address</label>
             <input type="email" id="email" placeholder="Enter your email address" required>
     
-            <label for="password">Password:</label>
+            <label for="password" id="password-label">Password</label>
             <div class="password-container">
                 <input type="password" id="password" placeholder="Enter your password" required>
                 <span class="toggle-password">
                     <img src="../images/eye-icon.png" width="40px" height="40px" alt="Show password" id="togglePasswordIcon">
                 </span>
             </div>
+
+            <label id="login-status"></label>
     
             <!-- Remember Me Checkbox -->
             <div class="checkbox-container">
@@ -42,6 +47,10 @@
     
             <button class="SignInBtn" type="submit">Sign In</button>
         </form>
+    </div>
+ 
+    <div class="signin-progress">
+        <label id="signin-progress-label">Signing you in...</label>
     </div>
 
     <script type="module" src="../js/signin.js"></script>  
