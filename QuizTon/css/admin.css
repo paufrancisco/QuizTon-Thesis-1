@@ -30,7 +30,7 @@ body {
     text-align: center;
     margin-bottom: 20px;
     font-size: 36px;
-    color: black;
+    color: #38A899;
 }
 
 /* Sidebar Links */
@@ -88,15 +88,22 @@ body {
     margin-left: 350px;
     padding: 20px;
     width: 100%;
+    /* Add a bottom border with your desired color */
+
 }
 
 .header {
+   
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #FFFFFF;
     padding: 10px 20px;
     color: rgb(0, 0, 0);
+    height: 15%;
+    width: 100%;
+    border-bottom: 2px solid #000000;
+
 }
 
 .profile {
@@ -166,3 +173,25 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Dashboard */
+
+#dashboard h2{
+    color:#38A899;
+}
+
+
+/* Question Bank */
+
+#question-bank h2{
+    color:#38A899;
+}
+
+/* Accounts */
+
+#accounts h2{
+    color:#38A899;
+}
+
+#departments h2{
+    color:#38A899;
+}
