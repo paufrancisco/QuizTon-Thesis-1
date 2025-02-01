@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter';
     animation: fadeIn 1s ease-in-out;
  }
 
@@ -35,7 +35,7 @@
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
-    font-family: 'Archivo', sans-serif;
+    font-family: 'Archivo';
     transition: 0.3s;
 }
 
@@ -219,5 +219,3 @@ button:hover {
     font-size: 14px;
     margin-top: 8px;
 }
-
-
