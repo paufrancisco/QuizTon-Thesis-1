@@ -15,25 +15,24 @@
                 <i class="icon fas fa-tachometer-alt"></i>
                 <span class="link-text">Dashboard</span>
             </a>
-            <a href="#" class="sidebar-link" data-target="question-bank">
+            <a href="#" class="sidebar-link" data-target="question-generator">
                 <i class="icon fas fa-book"></i>
                 <span class="link-text">Quiz Generator</span>
             </a>
-            <a href="#" class="sidebar-link" data-target="accounts">
+            <a href="#" class="sidebar-link" data-target="saved">
                 <i class="icon fas fa-users"></i>
                 <span class="link-text">Saved Questions</span>
             </a>
-            <a href="#" class="sidebar-link" data-target="departments">
-                <i class="icon fas fa-building"></i>
-                <span class="link-text">Departments</span>
-            </a>
         </div>
 
+        <!-- Main Content -->
         <div class="main-content">
+            <!-- Header -->
             <div class="header">
                 <div class="logo">
                     <h1>Teacher Dashboard</h1>
                 </div>
+                <!-- Profile Circle -->
                 <div class="profile">
                     <img src="../../images/placeholder-image.jpg" alt="Profile Picture" id="profile-image"> 
                     <div class="profile-dropdown">
@@ -46,8 +45,17 @@
                 </div>
             </div>
 
-            <div class="dashboard-container">
-                <div class="dashboard-section left" id="quiz-statistics">
+            <!-- Content Sections -->
+            <div id="dashboard" class="content active-content">
+                <h2>Welcome to the Dashboard</h2>
+                <p>Manage the QuizTon system here.</p>
+            </div>
+                
+            <div id="question-generator" class="content">
+                <h2>Question Generator</h2>
+                <p>Convert your pdf to question here.</p>
+                <div class="generator-container">
+                <div class="dashboard-section left" id="quiz-generator">
                     <h2>Quiz Generator</h2>
                     <p>View analytics on quiz performance.</p>
                     <div class="conversion-form">
@@ -77,43 +85,27 @@
                     </div>
                 </div>
 
-                <div class="dashboard-section right" id="recent-activities">
+                <div class="dashboard-section right" id="quiz-result">
                     <h2>Result of Conversion</h2>
                     <p>See the question and answer.</p>
-                    
                 </div>
             </div>
-        </div>
-                
-                
-            </div>
-
-            <div id="question-bank" class="content">
-                <h2>Quiz Generator</h2>
-                <div class="dashboard-section left" id="quiz-statistics">
-                    <h3>Quiz G</h3>
-                    <p>View analytics on quiz performance.</p>
-                </div>
-
-                <div class="dashboard-section right" id="recent-activities">
-                    <h3>Result of conversion</h3>
-                    <p>See the question and answer</p>
-                </div>
-            </div>
-
-            <div id="accounts" class="content">
-                <h2>Question Bank</h2>
-                <p>Manage and choose questions.</p>
+            
+            <div id="saved" class="content">
+                <h2>Welcome to the Dashboard</h2>
+                <p>Manage the QuizTon system here.</p>
             </div>
         </div>
 
+        <script type="module" src="../../js/teacher.js"></script>
+        <script type="module" src="../../js/general function/logout.js"></script>
+        <script type="module" src="../../js/general function/firebase.js"></script>
+        <script type="module" src="../../js/admn function/delete-account.js"></script>
+        <script type="module" src="../../js/general function/sidebar.js"></script>
+        <script type="module" src="../../js/admn function/new-account.js"></script>
+        <script type="module" src="../../js/admn function/update-account.js"></script>
+        <script type="module" src="../../js/admn function/profile-dropdown.js"></script>
     </body>
-    <script type="module" src="../../js/teacher.js"></script>
-    <script type="module" src="../../js/general function/logout.js"></script>
-    <script type="module" src="../../js/general function/firebase.js"></script>
-    <script type="module" src="../../js/admn function/delete-account.js"></script>
-    <script type="module" src="../../js/general function/sidebar.js"></script>
-    <script type="module" src="../../js/admn function/new-account.js"></script>
-    <script type="module" src="../../js/admn function/update-account.js"></script>
-    <script type="module" src="../../js/admn function/profile-dropdown.js"></script>
+
+    
 </html>

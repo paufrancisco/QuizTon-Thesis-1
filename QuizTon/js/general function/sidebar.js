@@ -1,28 +1,21 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////SIDEBAR FUNCTIONS//////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const links = document.querySelectorAll('.sidebar-link');
+const contents = document.querySelectorAll('.content');
 
+links.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default anchor behavior
 
-// Select all sidebar links
-const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        // Remove the active-content class from all sections
+        contents.forEach(content => content.classList.remove('active-content'));
 
-// Add event listeners to sidebar links
-sidebarLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Get the target content section
-        const targetContent = this.getAttribute('data-target');
-        
-        // Hide all content sections
-        document.querySelectorAll('.content').forEach(content => {
-            content.classList.remove('active-content');
-        });
+        // Get the target section from the data-target attribute
+        const target = link.getAttribute('data-target');
 
-        // Show the clicked content section
-        document.getElementById(targetContent)?.classList.add('active-content');
+        // Add the active-content class to the targeted section
+        document.getElementById(target).classList.add('active-content');
     });
 });
+
 
 
 const hamburgerMenu = document.querySelector('.hamburger-menu');
