@@ -37,3 +37,19 @@ hamburgerMenu.addEventListener('click', () => {
         "url('../../images/back.png')";  
     }
 });
+links.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        // Remove 'active-content' from all sections and active class from all links
+        contents.forEach(content => content.classList.remove('active-content'));
+        links.forEach(link => link.classList.remove('active'));
+
+        // Get the target section and activate it
+        const target = link.getAttribute('data-target');
+        document.getElementById(target).classList.add('active-content');
+
+        // Add the 'active' class to the clicked link
+        link.classList.add('active');
+    });
+});
