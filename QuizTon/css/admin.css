@@ -192,6 +192,40 @@ body {
     color:#38A899;
 }
 
+.actions {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between items */
+    width: 100%; /* Make the actions div take the full width */
+    margin-top: 20px; /* Space above the actions section */
+}
+
+#search {
+    padding: 10px; /* Add padding for better appearance */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    width: 350px; /* Set a fixed width for the search input */
+    margin-right: 10px; /* Space between input and button */
+}
+
+.new-button {
+    padding: 10px 15px; /* Add padding for the button */
+    background-color: #38A899; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    width: 15%;
+}
+
+.new-button:hover {
+    background-color: #2e7a6d; /* Darker shade on hover */
+}
+
+/* Edit Modals */
+
+
 /* Department */
 
 #departments h2{
