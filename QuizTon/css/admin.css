@@ -225,6 +225,15 @@ body {
 
 /* Edit Modals */
 
+#editModal{
+    width: 25%;
+    padding: 20%;
+    border-radius: 5px;
+}
+
+#editModal input{
+    width: 70%;
+}
 
 /* Department */
 
