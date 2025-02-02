@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     animation: fadeIn 1s ease-in-out;
  }
 
@@ -13,6 +13,11 @@
     100% {
         opacity: 1;
     }
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
 }
 
  html, body {
@@ -27,7 +32,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #16423C;
-    padding: 10px 25px;
+    padding: 10px 30px;
 }
 
 .navbar .logo {
@@ -35,17 +40,18 @@
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
-    font-family: 'Archivo';
-    transition: 0.3s;
+    font-family: 'Archivo', sans-serif;
+    transition: 0.2s ease-in-out;
 }
 
 .navbar .logo:hover {
     color: #bbbbbb;
+    transform: scale(1.1);
 }
 
 .nav-links {
     display: flex;
-    gap: 40px;
+    gap: 50px;
     font-size: 16px;
     align-items: center;
 }
@@ -53,6 +59,12 @@
 .nav-links a {
     text-decoration: none;
     color: white;
+    transition: 0.2s ease-in-out;
+}
+
+.nav-links a:hover {
+    transform: scale(1.1);
+    font-weight: bold;
 }
 
 #sjcdc-logo {
@@ -76,6 +88,11 @@
 
 #email {
     margin-bottom: 1rem;
+    transition: 0.2s ease-in-out;
+}
+
+#email:hover {
+    transform: scale(1.04);
 }
 
 #password-label {
@@ -104,12 +121,11 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-image: url("../images/login-background.png");
+    background-image: url("../images/login/login-background.png");
     background-size: cover;
     background-position: center;
     font-size: 16px;
 }
-
 
 /* Sign-In Form */
 form {
@@ -143,6 +159,11 @@ input {
 
 .password-container input {
     padding-right: 40px;
+    transition: 0.2s ease-in-out;
+}
+
+.password-container input:hover {
+    transform: scale(1.04);
 }
 
 .toggle-password {
@@ -157,6 +178,11 @@ input {
 #togglePasswordIcon {
     width: 30px;
     height: auto;
+    transition: 0.1s ease-in-out;
+}
+
+#togglePasswordIcon:hover{
+    transform: scale(1.1);
 }
 
 /* Checkbox Container */
@@ -171,7 +197,12 @@ input {
 .checkbox-container input {
     width: auto;  
     margin: 0; 
-    vertical-align: middle;  
+    vertical-align: middle;
+    transition: 0.1s ease-in-out; 
+}
+
+.checkbox-container input:hover {
+    transform: scale(1.1);
 }
 
 .checkbox-container label {
@@ -189,11 +220,12 @@ button {
     border-radius: 5px; 
     cursor: pointer; 
     font-size: 16px; 
-    transition: background 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 button:hover {
     background: #236058;
+    transform: scale(1.04);
 }
 
 .signin-progress {

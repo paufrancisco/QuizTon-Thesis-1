@@ -6,32 +6,29 @@
 
         <link rel="stylesheet" href="../css/welcome.css">        
         <script src="../js/welcome.js"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;700&display=swap" rel="stylesheet">
-
-        
-
-        
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Archivo:wght@400;600&display=swap" rel="stylesheet"> <!-- This imports the "Inter" & "Archivo" font -->
 
     </head>
     <body>
-        <header>
-            <div class="logo">QuizTon</div>
-            <nav>
-                <a href="welcome.html">Home</a>
-                <a href="#">Features</a>
-                <a href="#">FAQ</a>
-            </nav>
-            <a href="sign_In.html"><button class="login-btn">Log In</button></a>
-        </header>
+        <div class="container">
+            <header>
+                <div class="logo">QuizTon</div>
+                <nav>
+                    <a href="welcome.html">Home</a>
+                    <a href="#">Features</a>
+                    <a href="#">FAQ</a>
+                </nav>
+                <a href="sign_In.html"><button class="login-btn">Log In</button></a>
+            </header>
     
-        <main>
-            <h1 id="typewriter-heading"></h1>
-            <p id="typewriter-text"></p>
-            <a href="sign_In.html"><button class="get-started-btn">GET STARTED</button></a>
-        </main>
-        
+            <main>
+                <h1 id="typewriter-heading"></h1>
+                <p id="typewriter-text"></p>
+                <a href="sign_In.html"><button class="get-started-btn">GET STARTED</button></a>
+            </main>
+        </div>
+
+        <!-- script for typewriter effect -->
         <script>
             function typeWriterEffect(element, text, speed, callback) {
                 let i = 0;
@@ -51,11 +48,12 @@
                 const heading = document.getElementById("typewriter-heading");
                 const text = document.getElementById("typewriter-text");
         
-                typeWriterEffect(heading, "A quiz generator designed for teachers.", 50, () => {
+                typeWriterEffect(heading, "Quiz Generator for St. Jude Dasmarinas Cavite", 50, () => {
                     typeWriterEffect(text, "QuizTon is a cutting-edge artificial intelligence question generator designed with precision to revolutionize the process of question and exam development.", 25);
                 });
             });
         </script>
+        
     </body>
     
 </html>
