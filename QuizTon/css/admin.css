@@ -227,13 +227,96 @@ body {
 
 #editModal{
     width: 25%;
-    padding: 20%;
+    height: 70%;
+    padding: 20px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
-#editModal input{
-    width: 70%;
+#editModal h3{
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
+
+#editForm input{
+    width: 70%; /* Width of the input */
+    height: 10px; /* Set a specific height for the input */
+    padding: 10px; /* Add padding for better appearance */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 1px; /* Space between inputs */
+}
+
+#editForm{
+    display: flex; /* Use flexbox for the form */
+    flex-direction: column; /* Stack form elements vertically */
+    width: 100%; /* Make the form take the full width of the modal */
+}
+
+#editForm label {
+    margin-bottom: 1px; /* Space between label and input */
+    width: 100%; /* Make label take full width */
+    text-align: left; /* Align text to the left */
+}
+
+#editModal input {
+    width: 70%; /* Width of the input */
+    height: 10px; /* Set a specific height for the input */
+    padding: 8px; /* Add padding for better appearance */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 0px; /* Space between inputs (adjusted) */
+}
+
+#editForm select {
+    width: 70%; /* Width of the select element */
+    height: 32px; /* Set a specific height for the select */
+    padding: 2px; /* Add padding for better appearance */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 1px; /* Space between select and next element */
+}
+
+.button-container {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column;
+    justify-content: space-between; /* Evenly space the buttons */
+    width: 100%; /* Set the width of the button container */
+    margin-top: 0px; /* Space above the button container */
+    align-items: center;
+}
+
+.button-container button {
+    width: 80%; /* Set the width of each button to be nearly half */
+    padding: 10px; /* Add padding for better appearance */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    margin-bottom: 5px;
+}
+
+.button-container button[type="submit"] {
+    background-color: #38A899; /* Button background color */
+    color: white; /* Text color */
+}
+
+.button-container button[type="button"] {
+    background-color: #ccc; /* Button background color for close */
+    color: black; /* Text color */
+}
+
+.button-container button:hover {
+    background-color: #2e7a6d; /* Darker shade on hover for save button */
+}
+
+.button-container button[type="button"]:hover {
+    background-color: #aaa; /* Darker shade on hover for close button */
+}
+
+
+
 
 /* Department */
 
