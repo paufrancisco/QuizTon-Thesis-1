@@ -198,6 +198,7 @@ body {
     justify-content: space-between; /* Space between items */
     width: 100%; /* Make the actions div take the full width */
     margin-top: 20px; /* Space above the actions section */
+    margin-bottom: 30px;
 }
 
 #search {
@@ -319,7 +320,31 @@ body {
 }
 
 
+/*Teacher Table*/
+#teacher-table {
+    border-collapse: collapse; /* Collapse borders to avoid double borders */
+    width: 100%; /* Set the width of the table */
+}
 
+#teacher-table th,
+#teacher-table td {
+    border: none; /* Remove all borders */
+    padding: 10px; /* Add padding for better appearance */
+    text-align: center; /* Center text horizontally */
+    vertical-align: middle; /* Center text vertically */
+}
+
+#teacher-table tr {
+    border: none; /* Remove all borders from the row */
+}
+
+#teacher-table tr td {
+    border-bottom: 2px solid #ccc; /* Set the bottom border for each cell */
+}
+
+#teacher-table tr:last-child td {
+    border-bottom: none; /* Remove the bottom border for the last row */
+}
 
 /* Department */
 
