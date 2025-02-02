@@ -227,7 +227,7 @@ body {
 
 #editModal{
     width: 25%;
-    height: 70%;
+    height: 80%;
     padding: 20px;
     border-radius: 5px;
     display: flex;
@@ -236,7 +236,8 @@ body {
 
 #editModal h3{
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
+    text-align: center;
 }
 
 #editForm input{
@@ -252,15 +253,18 @@ body {
     display: flex; /* Use flexbox for the form */
     flex-direction: column; /* Stack form elements vertically */
     width: 100%; /* Make the form take the full width of the modal */
+    align-items: center;
 }
 
 #editForm label {
     margin-bottom: 1px; /* Space between label and input */
     width: 100%; /* Make label take full width */
     text-align: left; /* Align text to the left */
+    margin-bottom: 5px;
+    margin-left: 125px;
 }
 
-#editModal input {
+#editModal input{
     width: 70%; /* Width of the input */
     height: 10px; /* Set a specific height for the input */
     padding: 8px; /* Add padding for better appearance */
@@ -277,7 +281,6 @@ body {
     border-radius: 4px; /* Rounded corners */
     margin-bottom: 1px; /* Space between select and next element */
 }
-
 .button-container {
     display: flex; /* Use flexbox for layout */
     flex-direction: column;
