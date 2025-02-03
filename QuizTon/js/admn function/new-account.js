@@ -114,12 +114,14 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
             return;
         }
 
-        // Step 2: Create the new user without automatically signing them in
-        await createUserWithEmailAndPassword(auth, teacherData.email, teacherData.password);
+        // Step 2: Create the new user and get the unique UID
+        const userCredential = await createUserWithEmailAndPassword(auth, teacherData.email, teacherData.password);
+        const newUID = userCredential.user.uid; // Get the new user's UID
 
-        // Step 3: Add additional teacher data to Firestore
-        await setDoc(doc(db, "teacher_accounts", teacherData.email), {
-            ...teacherData
+        // Step 3: Add additional teacher data to Firestore using UID as the document ID
+        await setDoc(doc(db, "teacher_accounts", newUID), {
+            ...teacherData,
+            uid: newUID // Store UID in the document for reference
         });
 
         // Step 4: Preserve the current session (re-authenticate the current admin)
@@ -132,15 +134,15 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
         // Re-authenticate the current user with the entered password
         await reauthenticateCurrentUser(currentUser, adminPassword);
 
-        // Step 6: Provide feedback and close modal
+        // Step 5: Provide feedback and close modal
         alert("Teacher registered successfully!");
         getTeacherAccounts();  // Refresh teacher accounts
         modal.style.display = "none";
- 
 
     } catch (error) {
         console.error("Error creating user:", error);
         alert(`Error: ${error.code} - ${error.message}`);
+
         // Handle specific error cases
         if (error.code === 'auth/email-already-in-use') {
             alert("The email address is already registered.");
@@ -159,7 +161,7 @@ async function reauthenticateCurrentUser(currentUser, password) {
     const credential = EmailAuthProvider.credential(currentUser.email, password);
     try {
         await reauthenticateWithCredential(currentUser, credential);
-     } catch (error) {
+    } catch (error) {
         console.error("Error re-authenticating:", error);
         alert("Re-authentication failed. Please try again.");
     }
