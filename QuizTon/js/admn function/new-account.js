@@ -11,7 +11,9 @@ import {
     query, 
     doc, 
     setDoc, 
-    updateDoc 
+    updateDoc,
+    EmailAuthProvider,
+    reauthenticateWithCredential
 } from '../../js/general function/firebase.js';   
 
 
@@ -89,9 +91,8 @@ function generatePassword() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////// Register Teacher to Firestore //////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 document.getElementById("new-teacher-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent form submission
 
     const teacherData = {
         email: document.getElementById("email").value,
@@ -106,24 +107,41 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
     };
 
     try {
-        // Step 1: Create user in Firebase Auth
-        const userCredential = await createUserWithEmailAndPassword(auth, teacherData.email, teacherData.password);
-        const user = userCredential.user;
+        // Step 1: Get the currently signed-in user before creating the new one
+        const currentUser = auth.currentUser;
+        if (!currentUser) {
+            alert("No user is signed in. Please sign in first.");
+            return;
+        }
 
-        // Step 2: Add additional teacher data to Firestore
-        await setDoc(doc(db, "teacher_accounts", user.uid), {
-            uid: user.uid,  // Explicitly set document ID as the user UID
+        // Step 2: Create the new user without automatically signing them in
+        await createUserWithEmailAndPassword(auth, teacherData.email, teacherData.password);
+
+        // Step 3: Add additional teacher data to Firestore
+        await setDoc(doc(db, "teacher_accounts", teacherData.email), {
             ...teacherData
         });
-        
 
+        // Step 4: Preserve the current session (re-authenticate the current admin)
+        const adminPassword = prompt("Please enter your admin password to confirm session."); // Prompt for admin password
+        if (!adminPassword) {
+            alert("Password is required to re-authenticate.");
+            return;
+        }
+
+        // Re-authenticate the current user with the entered password
+        await reauthenticateCurrentUser(currentUser, adminPassword);
+
+        // Step 6: Provide feedback and close modal
         alert("Teacher registered successfully!");
-        getTeacherAccounts();
+        getTeacherAccounts();  // Refresh teacher accounts
         modal.style.display = "none";
+ 
+
     } catch (error) {
-        console.error("Error creating user: ", error);
+        console.error("Error creating user:", error);
         alert(`Error: ${error.code} - ${error.message}`);
-        // Specific error handling based on common Firebase errors
+        // Handle specific error cases
         if (error.code === 'auth/email-already-in-use') {
             alert("The email address is already registered.");
         } else if (error.code === 'auth/invalid-email') {
@@ -135,6 +153,19 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
         }
     }
 });
+
+// Function to re-authenticate the current user with the password entered
+async function reauthenticateCurrentUser(currentUser, password) {
+    const credential = EmailAuthProvider.credential(currentUser.email, password);
+    try {
+        await reauthenticateWithCredential(currentUser, credential);
+     } catch (error) {
+        console.error("Error re-authenticating:", error);
+        alert("Re-authentication failed. Please try again.");
+    }
+}
+
+
 
 
 
