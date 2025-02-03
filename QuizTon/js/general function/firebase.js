@@ -5,7 +5,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { collection, where,deleteDoc,getDocs, query, doc, setDoc,getDoc,updateDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAuth, signOut, createUserWithEmailAndPassword,EmailAuthProvider,reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, signOut, createUserWithEmailAndPassword,EmailAuthProvider,reauthenticateWithCredential,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 
 
@@ -40,5 +40,7 @@ export {
     setDoc, 
     updateDoc,
     EmailAuthProvider,
-    reauthenticateWithCredential
+    reauthenticateWithCredential,
+    getFirestore,
+    signInWithEmailAndPassword
 };  // Exporting everything needed for Firestore and Auth

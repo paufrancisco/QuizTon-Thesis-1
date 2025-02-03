@@ -13,7 +13,9 @@ import {
     setDoc, 
     updateDoc,
     EmailAuthProvider,
-    reauthenticateWithCredential
+    reauthenticateWithCredential,
+    getFirestore,
+    signInWithEmailAndPassword
 } from '../../js/general function/firebase.js';   
 
 
@@ -91,6 +93,8 @@ function generatePassword() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////// Register Teacher to Firestore //////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+
 document.getElementById("new-teacher-form").addEventListener("submit", async (e) => {
     e.preventDefault(); // Prevent form submission
 
@@ -107,34 +111,42 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
     };
 
     try {
-        // Step 1: Get the currently signed-in user before creating the new one
+        // Step 1: Get the currently signed-in admin
+        const auth = getAuth();
+        const db = getFirestore();
         const currentUser = auth.currentUser;
+
         if (!currentUser) {
-            alert("No user is signed in. Please sign in first.");
+            alert("No admin is signed in. Please sign in first.");
             return;
         }
 
-        // Step 2: Create the new user and get the unique UID
-        const userCredential = await createUserWithEmailAndPassword(auth, teacherData.email, teacherData.password);
-        const newUID = userCredential.user.uid; // Get the new user's UID
-
-        // Step 3: Add additional teacher data to Firestore using UID as the document ID
-        await setDoc(doc(db, "teacher_accounts", newUID), {
-            ...teacherData,
-            uid: newUID // Store UID in the document for reference
-        });
-
-        // Step 4: Preserve the current session (re-authenticate the current admin)
-        const adminPassword = prompt("Please enter your admin password to confirm session."); // Prompt for admin password
+        // Step 2: Store admin's email & prompt for re-authentication
+        const adminEmail = currentUser.email;
+        const adminPassword = prompt("Please enter your admin password to confirm session.");
         if (!adminPassword) {
             alert("Password is required to re-authenticate.");
             return;
         }
 
-        // Re-authenticate the current user with the entered password
-        await reauthenticateCurrentUser(currentUser, adminPassword);
+        // Step 3: Re-authenticate the admin to keep the session active
+        const credential = EmailAuthProvider.credential(adminEmail, adminPassword);
+        await reauthenticateWithCredential(currentUser, credential);
 
-        // Step 5: Provide feedback and close modal
+        // Step 4: Create the new teacher account
+        const userCredential = await createUserWithEmailAndPassword(auth, teacherData.email, teacherData.password);
+        const newUID = userCredential.user.uid; // Get the UID of the new teacher
+
+        // Step 5: Store teacher data in Firestore
+        await setDoc(doc(db, "teacher_accounts", newUID), {
+            ...teacherData,
+            uid: newUID // Save UID in Firestore
+        });
+
+        // Step 6: Sign the admin back in
+        await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
+
+        // Step 7: Provide feedback and close modal
         alert("Teacher registered successfully!");
         getTeacherAccounts();  // Refresh teacher accounts
         modal.style.display = "none";
@@ -155,18 +167,6 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
         }
     }
 });
-
-// Function to re-authenticate the current user with the password entered
-async function reauthenticateCurrentUser(currentUser, password) {
-    const credential = EmailAuthProvider.credential(currentUser.email, password);
-    try {
-        await reauthenticateWithCredential(currentUser, credential);
-    } catch (error) {
-        console.error("Error re-authenticating:", error);
-        alert("Re-authentication failed. Please try again.");
-    }
-}
-
 
 
 
