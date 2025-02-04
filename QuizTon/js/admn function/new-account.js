@@ -24,54 +24,29 @@ import {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const newTeacherButton = document.getElementById("new-teacher");
-const modal = document.createElement("div");
-modal.classList.add("modal");
-modal.innerHTML = `
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h3>Register New Teacher</h3>
-        <form id="new-teacher-form">
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
-            <label for="firstname">First Name:</label>
-            <input type="text" id="firstname" required>
-            <label for="lastname">Last Name:</label>
-            <input type="text" id="lastname" required>
-            <label for="facultyID">Faculty ID:</label>
-            <input type="text" id="facultyID" required>
-            <label for="password">Generated Password:</label>
-            <input type="text" id="password" readonly>
-            <label for="role">Role:</label>
-            <select id="role">
-                <option value="teacher">Teacher</option>
-                <option value="admin">Admin</option>
-            </select>
-            <label for="grade-level">Grade Level Assigned:</label>
-            <input type="text" id="grade-level" required>
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" required> 
-            <label for="date-hired">Date Hired:</label>
-            <input type="date" id="date-hired" required>
-            <div class="modal-buttons">
-                <button type="button" id="cancel-btn">Cancel</button>
-                <button type="submit">Register</button>
-            </div>
-        </form>
-    </div>
-`;
-document.body.appendChild(modal);
+const modal = document.querySelector(".modal");
+const closeBtn = modal.querySelector(".close-btn");
+const cancelBtn = document.getElementById("cancel-btn");
 
 // Show Modal
 newTeacherButton.addEventListener("click", () => {
-    modal.style.display = "block";
+    modal.style.display = "flex";  
 });
 
 // Close Modal
-modal.querySelector(".close-btn").addEventListener("click", () => {
+closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
 });
-document.getElementById("cancel-btn").addEventListener("click", () => {
+
+cancelBtn.addEventListener("click", () => {
     modal.style.display = "none";
+});
+
+// Optionally, close modal if user clicks outside
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
 });
 
 // Generate Password
@@ -106,7 +81,6 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
         password: document.getElementById("password").value,
         role: document.getElementById("role").value,
         gradeLevel: document.getElementById("grade-level").value,
-        dob: document.getElementById("dob").value,
         dateHired: document.getElementById("date-hired").value
     };
 
@@ -315,3 +289,7 @@ function openEditModal(teacherData) {
         closeModal();
     };
 }
+
+window.addEventListener("load", () => {
+    modal.style.display = "none";
+});

@@ -143,6 +143,62 @@
         </div>
 
 
+        <!-- New Teacher Modal -->
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span> 
+                <h3>Register New Teacher</h3>
+                <form id="new-teacher-form">
+                    <div class="form-row">
+                        <div class="form-column">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                            
+                            <label for="firstname">First Name:</label>
+                            <input type="text" id="firstname" required>
+                            
+                            <label for="lastname">Last Name:</label>
+                            <input type="text" id="lastname" required>
+                            
+                            <label for="password">Generated Password:</label>
+                            <input type="text" id="password" readonly>
+                            
+                            
+                        </div>
+                        <div class="form-column">
+                            <label for="facultyID">Faculty ID:</label>
+                            <input type="text" id="facultyID" required>
+                            
+                            <label for="role">Role:</label>
+                            <select id="role">
+                                <option value="teacher">Teacher</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                            
+                            <label for="date-hired">Date Hired:</label>
+                            <input type="date" id="date-hired" required>
+
+                            <label for="grade-level">Grade Level Assigned:</label>
+                            <select id="grade-level">
+                                <option value="Grade 6">Grade 6</option>
+                                <option value="Grade 5">Grade 5</option>
+                                <option value="Grade 4">Grade 4</option>
+                                <option value="Grade 3">Grade 3</option>
+                                <option value="Grade 2">Grade 2</option>
+                                <option value="Grade 1">Grade 1</option>
+
+                            </select>
+                         </div>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" id="cancel-btn">Cancel</button>
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+       
+        
         <script type="module" src="../../js/admn function/delete-account.js"></script>
         <script type="module" src="../../js/general function/logout.js"></script>
         <script type="module" src="../../js/general function/sidebar.js"></script>
