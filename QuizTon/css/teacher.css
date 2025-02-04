@@ -164,6 +164,9 @@ body {
     background-color: #FFFFFF;
     padding: 10px 20px;
     color: rgb(0, 0, 0);
+    height: 15%;
+    width: 100%;
+    border-bottom: 2px solid #000000;
 }
 
 .profile {
