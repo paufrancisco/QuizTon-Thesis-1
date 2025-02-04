@@ -69,19 +69,20 @@ function generatePassword() {
 ////////////////////////// Register Teacher to Firestore //////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
+const teacherTable = document.getElementById("teacher-table").getElementsByTagName("tbody")[0]; // Get the tbody of the table
 
 document.getElementById("new-teacher-form").addEventListener("submit", async (e) => {
     e.preventDefault(); // Prevent form submission
 
     const teacherData = {
-        email: document.getElementById("email").value,
         firstname: document.getElementById("firstname").value,
         lastname: document.getElementById("lastname").value,
+        email: document.getElementById("email").value,
         facultyID: document.getElementById("facultyID").value,
         password: document.getElementById("password").value,
         role: document.getElementById("role").value,
+        dateHired: document.getElementById("date-hired").value,
         gradeLevel: document.getElementById("grade-level").value,
-        dateHired: document.getElementById("date-hired").value
     };
 
     try {
@@ -150,77 +151,84 @@ document.getElementById("new-teacher-form").addEventListener("submit", async (e)
 ///////////////////////////////////////Fetch and display teacher data from Firestore//////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+async function getTeacherAccounts() {
+    // Ensure Firestore reference
+    const db = getFirestore();
+    const teacherRef = collection(db, "teacher_accounts");
 
-const teacherTable = document.getElementById("teacher-table").getElementsByTagName("tbody")[0]; // Get the tbody of the table
-    
-    // Function to retrieve and display teacher accounts
-    async function getTeacherAccounts() {
-        // Reference to the "teacher_accounts" collection in Firestore
-        const teacherRef = collection(db, "teacher_accounts");
+    try {
         const teacherSnapshot = await getDocs(teacherRef);
-        const teacherList = teacherSnapshot.docs.map(doc => doc.data()); // Get data from each document
-        
+        const teacherList = teacherSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); // Include document ID
+
         // Clear current table rows
         teacherTable.innerHTML = "";
-        
-        // Loop through the teacherList to add each row
+
+        // Loop through each teacher and add to the table
         teacherList.forEach(teacher => {
-            // Create a new row for each teacher
             const row = teacherTable.insertRow();
-            
-            // Create and populate the columns for each teacher
-            const emailCell = row.insertCell(0);
+
+            // First Name (fn)
+            const firstNameCell = row.insertCell(0);
+            firstNameCell.textContent = teacher.firstname || "N/A";
+
+            // Last Name (ln)
+            const lastNameCell = row.insertCell(1);
+            lastNameCell.textContent = teacher.lastname || "N/A";
+
+            // Email
+            const emailCell = row.insertCell(2);
             emailCell.textContent = teacher.email || "N/A";
-                        
-            const roleCell = row.insertCell(1);
+
+            // Role
+            const roleCell = row.insertCell(3);
             roleCell.textContent = teacher.role || "N/A";
-                      
-            const dateHiredCell = row.insertCell(2);
-            dateHiredCell.textContent = teacher.dateHired || "N/A";
-            
-            const gradeLevelCell = row.insertCell(3);
+
+            // Grade Level
+            const gradeLevelCell = row.insertCell(4);
             gradeLevelCell.textContent = teacher.gradeLevel || "N/A";
-            
-            const statusCell = row.insertCell(4);
+
+            // Date Hired
+            const dateHiredCell = row.insertCell(5);
+            dateHiredCell.textContent = teacher.dateHired || "N/A";
+
+            // Status
+            const statusCell = row.insertCell(6);
             statusCell.textContent = teacher.status || "Inactive";
-            
-            const actionsCell = row.insertCell(5);
-             
-            // Create the edit button
+
+            // Actions
+            const actionsCell = row.insertCell(7);
+
+            // Edit Button
             const editButton = document.createElement("button");
             editButton.textContent = "Edit";
             editButton.classList.add("edit-btn");
-            editButton.onclick = function () {
-                openEditModal(teacher);
-            };
+            editButton.onclick = () => openEditModal(teacher);
 
-            // Create the delete button
+            // Delete Button
             const deleteButton = document.createElement("button");
             deleteButton.textContent = "Delete";
             deleteButton.classList.add("delete-btn");
-
-            // Adding confirmation prompt before deletion
-            deleteButton.onclick = function () {
-                // Show a confirmation dialog
+            deleteButton.onclick = () => {
                 const confirmDelete = window.confirm("Are you sure you want to delete this teacher?");
-                
                 if (confirmDelete) {
-                    // If the user confirms, proceed to delete
-                    deleteTeacherFromFirestore(teacher.facultyID); // Pass the teacher's facultyID
-                } else {
-                    // If the user cancels, do nothing
-                    console.log("Teacher deletion canceled.");
+                    deleteTeacherFromFirestore(teacher.id); // Use document ID for deletion
                 }
             };
 
+            // Append buttons to actions cell
             actionsCell.appendChild(editButton);
             actionsCell.appendChild(deleteButton);
         });
-    }
 
-    // Call the function to retrieve and populate the table when the page loads
-    window.addEventListener("DOMContentLoaded", getTeacherAccounts); 
-    
+    } catch (error) {
+        console.error("Error fetching teacher accounts:", error);
+        alert("Failed to load teacher accounts. Please try again.");
+    }
+}
+
+// Ensure function runs on page load
+window.addEventListener("DOMContentLoaded", getTeacherAccounts);
+
 
 
 
@@ -232,7 +240,6 @@ const teacherTable = document.getElementById("teacher-table").getElementsByTagNa
 function openEditModal(teacherData) {
     // Populate the modal with teacher data
     document.getElementById("edit-email").value = teacherData.email || "";
-    document.getElementById("edit-password").value = teacherData.password || "";
     document.getElementById("edit-role").value = teacherData.role || "";
     document.getElementById("edit-date-hired").value = teacherData.dateHired || "";
     document.getElementById("edit-year-level").value = teacherData.gradeLevel || "";
@@ -251,8 +258,9 @@ function openEditModal(teacherData) {
         // Get updated data from the form
         const updatedTeacher = {
             email: document.getElementById("edit-email").value,
-            password: document.getElementById("edit-password").value,
             role: document.getElementById("edit-role").value,
+            firstname: document.getElementById("edit-firstname").value,
+            firstname: document.getElementById("edit-lastname").value,
             dateHired: document.getElementById("edit-date-hired").value,
             gradeLevel: document.getElementById("edit-year-level").value,
             status: document.getElementById("edit-status").value

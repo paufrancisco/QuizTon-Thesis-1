@@ -79,21 +79,24 @@
                 </div>
 
                 <!-- Teacher Accounts Table -->
-                    <table id="teacher-table">
-                        <thead>
-                            <tr>
-                                <th id="email-header">Email Address</th> 
-                                <th id="role-header">Role</th> 
-                                <th id="date-hired-header">Date Hired</th>
-                                <th id="year-level-header">Year Level</th>
-                                <th id="status-header">Status</th>
-                                <th>Actions</th>  
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Teacher accounts will be dynamically populated here from Firebase -->
-                        </tbody>
-                    </table>
+                <table id="teacher-table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Grade Level</th>
+                            <th>Date Hired</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Teacher accounts will be dynamically populated here -->
+                    </tbody>
+                </table>
+                
             </div>
 
             <div id="departments" class="content">
@@ -107,24 +110,38 @@
             <h3>Edit Teacher Information</h3>
             <form id="editForm">
                 <div id="split1">
+                    <label for="edit-firstname">First Name:</label>
+                    <input type="text" id="edit-role" name="role">
+
+                    <label for="edit-lastname">Last Name:</label>
+                    <input type="text" id="edit-role" name="role">
+
                     <label for="edit-email">Email Address:</label>
                     <input type="email" id="edit-email" name="email">
 
-                    <label for="edit-password">Password:</label>
-                    <input type="password" id="edit-password" name="password">
+                    <label for="edit-role">Role:</label> 
+                    <select id="edit-role" name="status">
+                        <option value="admin">Admin</option>
+                        <option value="teacher">Teacher</option>
+                    </select>
 
-                    <label for="edit-role">Role:</label>
-                    <input type="text" id="edit-role" name="role">
-
-                    <label for="edit-dob">Date of Birth:</label>
-                    <input type="date" id="edit-dob" name="dob">
+                    
                 </div>
                 <div id="split2">
+                    
+                    <label for="edit-year-level">Year Level:</label>
+                    <select id="edit-year-level">
+                        <option value="Grade 6">Grade 6</option>
+                        <option value="Grade 5">Grade 5</option>
+                        <option value="Grade 4">Grade 4</option>
+                        <option value="Grade 3">Grade 3</option>
+                        <option value="Grade 2">Grade 2</option>
+                        <option value="Grade 1">Grade 1</option>
+
+                    </select>
+
                     <label for="edit-date-hired">Date Hired:</label>
                     <input type="date" id="edit-date-hired" name="dateHired">
-
-                    <label for="edit-year-level">Year Level:</label>
-                    <input type="text" id="edit-year-level" name="yearLevel">
 
                     <label for="edit-status">Status:</label>
                     <select id="edit-status" name="status">
@@ -149,8 +166,6 @@
                 <form id="new-teacher-form">
                     <div class="form-row">
                         <div class="form-column">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" required>
                             
                             <label for="firstname">First Name:</label>
                             <input type="text" id="firstname" required>
@@ -158,10 +173,12 @@
                             <label for="lastname">Last Name:</label>
                             <input type="text" id="lastname" required>
                             
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+
                             <label for="password">Generated Password:</label>
                             <input type="text" id="password" readonly>
-                            
-                            
+                        
                         </div>
                         <div class="form-column">
                             <label for="facultyID">Faculty ID:</label>
