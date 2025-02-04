@@ -227,17 +227,17 @@ body {
 /* Edit Modals */
 
 #editModal{
-    width: 25%;
-    height: 80%;
+    width: 55%;
+    height: 47%;
     padding: 20px;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
+    display: inline;
+    
 }
 
 #editModal h3{
     margin-top: 5px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -250,19 +250,29 @@ body {
     margin-bottom: 1px; /* Space between inputs */
 }
 
-#editForm{
-    display: flex; /* Use flexbox for the form */
-    flex-direction: column; /* Stack form elements vertically */
+#editForm {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the columns horizontally */
     width: 100%; /* Make the form take the full width of the modal */
-    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+}
+
+#split1, #split2 {
+    flex: 1; /* Allow each column to take equal space */
+    min-width: 200px; /* Minimum width for responsiveness */
+    margin: 5px; /* Space between columns */
+    display: flex; /* Use flexbox for the column */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
 }
 
 #editForm label {
     margin-bottom: 1px; /* Space between label and input */
     width: 100%; /* Make label take full width */
     text-align: left; /* Align text to the left */
-    margin-bottom: 5px;
-    margin-left: 125px;
+    margin-bottom: 10px;
+    margin-left: 5px;
 }
 
 #editModal input{
@@ -271,7 +281,7 @@ body {
     padding: 8px; /* Add padding for better appearance */
     border: 1px solid #ccc; /* Light gray border */
     border-radius: 4px; /* Rounded corners */
-    margin-bottom: 0px; /* Space between inputs (adjusted) */
+    margin-bottom: 20px; /* Space between inputs (adjusted) */
 }
 
 #editForm select {
@@ -292,7 +302,7 @@ body {
 }
 
 .button-container button {
-    width: 80%; /* Set the width of each button to be nearly half */
+    width: 30%; /* Set the width of each button to be nearly half */
     padding: 10px; /* Add padding for better appearance */
     border: none; /* Remove default border */
     border-radius: 4px; /* Rounded corners */
