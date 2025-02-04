@@ -171,42 +171,20 @@ const teacherTable = document.getElementById("teacher-table").getElementsByTagNa
             // Create and populate the columns for each teacher
             const emailCell = row.insertCell(0);
             emailCell.textContent = teacher.email || "N/A";
-            
-            const passwordCell = row.insertCell(1);
-            const passwordInput = document.createElement("input");
-            passwordInput.type = "password";
-            passwordInput.value = teacher.password || "N/A";
-            passwordCell.appendChild(passwordInput);
-
-            const showHideButton = document.createElement("button");
-            showHideButton.textContent = "Show";
-            showHideButton.onclick = function () {
-                if (passwordInput.type === "password") {
-                    passwordInput.type = "text";
-                    showHideButton.textContent = "Hide";
-                } else {
-                    passwordInput.type = "password";
-                    showHideButton.textContent = "Show";
-                }
-            };
-            passwordCell.appendChild(showHideButton);
-            
-            const roleCell = row.insertCell(2);
+                        
+            const roleCell = row.insertCell(1);
             roleCell.textContent = teacher.role || "N/A";
-            
-            const dobCell = row.insertCell(3);
-            dobCell.textContent = teacher.dob || "N/A";
-            
-            const dateHiredCell = row.insertCell(4);
+                      
+            const dateHiredCell = row.insertCell(2);
             dateHiredCell.textContent = teacher.dateHired || "N/A";
             
-            const gradeLevelCell = row.insertCell(5);
+            const gradeLevelCell = row.insertCell(3);
             gradeLevelCell.textContent = teacher.gradeLevel || "N/A";
             
-            const statusCell = row.insertCell(6);
+            const statusCell = row.insertCell(4);
             statusCell.textContent = teacher.status || "Inactive";
             
-            const actionsCell = row.insertCell(7);
+            const actionsCell = row.insertCell(5);
              
             // Create the edit button
             const editButton = document.createElement("button");
@@ -256,7 +234,6 @@ function openEditModal(teacherData) {
     document.getElementById("edit-email").value = teacherData.email || "";
     document.getElementById("edit-password").value = teacherData.password || "";
     document.getElementById("edit-role").value = teacherData.role || "";
-    document.getElementById("edit-dob").value = teacherData.dob || "";
     document.getElementById("edit-date-hired").value = teacherData.dateHired || "";
     document.getElementById("edit-year-level").value = teacherData.gradeLevel || "";
     document.getElementById("edit-status").value = teacherData.status || "Inactive";
@@ -276,7 +253,6 @@ function openEditModal(teacherData) {
             email: document.getElementById("edit-email").value,
             password: document.getElementById("edit-password").value,
             role: document.getElementById("edit-role").value,
-            dob: document.getElementById("edit-dob").value,
             dateHired: document.getElementById("edit-date-hired").value,
             gradeLevel: document.getElementById("edit-year-level").value,
             status: document.getElementById("edit-status").value
