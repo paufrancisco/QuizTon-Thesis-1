@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
     passwordInput.type = type;
     togglePasswordIcon.src =
       type === "password"
-        ? "../images/eye-icon.png"
-        : "../images/eye-slash.png";
+        ? "../images/login/eye-icon.png"
+        : "../images/login/eye-slash.png";
   });
 
   signinForm.addEventListener("submit", (e) => {
@@ -124,4 +124,19 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("email");
     }
   });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const logoButton = document.querySelector(".logo");
+
+  function fadeOutAndRedirect(event) {
+    event.preventDefault();
+    document.body.classList.add("fade-out");
+
+    setTimeout(() => {
+      window.location.href = event.target.closest("a").href;
+    }, 500);
+  }
+
+  logoButton.addEventListener("click", fadeOutAndRedirect);
 });
